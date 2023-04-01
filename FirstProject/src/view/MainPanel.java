@@ -5,10 +5,10 @@ import model.user.Admin;
 import java.util.Scanner;
 
 public class MainPanel {
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
 
     public MainPanel(){
-        scanner = new Scanner(System.in);
+
     }
 
     public static void mainPage(){

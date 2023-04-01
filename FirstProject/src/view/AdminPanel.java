@@ -6,10 +6,10 @@ import model.user.Customer;
 import java.util.Scanner;
 
 public class AdminPanel {
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);;
 
     public AdminPanel(){
-        scanner = new Scanner(System.in);
+
     }
 
     public static void adminPage(){
@@ -36,8 +36,10 @@ public class AdminPanel {
     }
 
     private static void viewUsers(){
-        for (Customer customer : CustomerControl.getUsers()){
-            System.out.println(customer.toString());
+        for (Customer customer : CustomerControl.getCustomers()){
+            if(customer != null) {
+                System.out.println(customer.toString());
+            }
         }
     }
 }

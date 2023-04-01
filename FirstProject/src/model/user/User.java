@@ -37,6 +37,11 @@ public abstract class User {
         this.password = password;
     }
 
+
+    //override method toString
+    @Override
+    public abstract String toString();
+
     //getters
     public String getEmailAddress() {
         return emailAddress;

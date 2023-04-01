@@ -5,13 +5,13 @@ import model.user.Customer;
 import java.util.ArrayList;
 
 public class CustomerControl {
-    private static ArrayList<Customer> customers;
+    private static ArrayList<Customer> customers = new ArrayList<>();;
 
     public CustomerControl(){
-        customers = new ArrayList<>();
+
     }
 
-    public static ArrayList<Customer> getUsers() {
+    public static ArrayList<Customer> getCustomers() {
         return customers;
     }
 }
