@@ -44,7 +44,7 @@ public class MainPanel {
         String inputPass = scanner.nextLine();
 
         if(inputUsername.equals("admin") && inputPass.equals("admin1382")){
-            AdminPanel.adminPage();
+
         }
     }
 }
