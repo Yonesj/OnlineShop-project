@@ -1,5 +1,7 @@
 package view;
 
+import model.user.Admin;
+
 import java.util.Scanner;
 
 public class MainPanel {
@@ -16,6 +18,7 @@ public class MainPanel {
 
         switch (input){
             case 1:
+                loggin();
                 break;
             case 2:
 
@@ -31,5 +34,17 @@ public class MainPanel {
                 break;
         }
 
+    }
+
+    static void loggin(){
+        scanner.nextLine();
+        System.out.println("Enter your username:");
+        String inputUsername = scanner.nextLine();
+        System.out.println("Enter your password");
+        String inputPass = scanner.nextLine();
+
+        if(inputUsername.equals("admin") && inputPass.equals("admin1382")){
+            Admin admin = Admin.getAdmin();
+        }
     }
 }

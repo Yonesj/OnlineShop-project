@@ -1,10 +1,19 @@
 package model.user;
 
+import model.commodity.Commodity;
+import model.connectors.Request;
+
+import java.util.ArrayList;
+
 public class Admin extends User {
     private static Admin admin;
+    private ArrayList<Commodity> commodityList;
+    private ArrayList<Request> requests;
 
     private Admin(String username,String emailAddress,String phoneNumber,String password){
         super(username,emailAddress,phoneNumber,password);
+        commodityList = new ArrayList<>();
+        requests = new ArrayList<>();
     }
 
     public static Admin getAdmin() {
