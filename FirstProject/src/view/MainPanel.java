@@ -11,7 +11,7 @@ public class MainPanel {
         scanner = new Scanner(System.in);
     }
 
-    public void mainPage(){
+    public static void mainPage(){
         System.out.println("[1] Sign up\n[2] Sign in\n[3] Products\n[4] Exit");
 
         int input = scanner.nextInt();
@@ -44,7 +44,7 @@ public class MainPanel {
         String inputPass = scanner.nextLine();
 
         if(inputUsername.equals("admin") && inputPass.equals("admin1382")){
-            Admin admin = Admin.getAdmin();
+            AdminPanel.adminPage();
         }
     }
 }
