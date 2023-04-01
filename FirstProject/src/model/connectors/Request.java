@@ -32,7 +32,7 @@ public class Request {
         if(requestType == RequestType.SIGNIN){
             return String.format("%s\n%s\n%s","Request type: Sign in","user information:",customer.toString());
         }else if(requestType == RequestType.COMMENT){
-            return String.format("%s\n%-15s%s\n%-15s%s","Request type: Comment","user:",customer.getUsername(),"Comment:",comment.toString());
+            return String.format("%s\n%-15s%s\n%-15s%s","Request type: Comment","user:",customer.getUsername(),"Comment:",comment.getText());
         }else {
             return String.format("%s\n%-15s%s\n%-15s%f","Request type: Increase Credit","user:",customer.getUsername(),"Amount:",amount);
         }
