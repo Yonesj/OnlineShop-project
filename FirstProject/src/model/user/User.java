@@ -18,7 +18,7 @@ public abstract class User {
 
     // Constructors
     public User(String username,String emailAddress,String phoneNumber,String password){
-        if(true){
+        if(false){
             throw new IllegalArgumentException("This username has been taken!");
         }
         if(!emailPattern.matcher(emailAddress).find()){
