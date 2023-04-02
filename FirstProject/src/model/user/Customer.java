@@ -21,7 +21,7 @@ public class Customer extends User {
     //override method toString
     @Override
     public String toString(){
-        return String.format("%-15s%s\n%-15s%s\n%-15s%s\n%-15s%f","Username:",getUsername()
+        return String.format("%-15s%s\n%-15s%s\n%-15s%s\n%-15s%f\n","Username:",getUsername()
                 ,"Email Address:",getEmailAddress(),"Phone Number:",getPhoneNumber(),"Credit:",getCredit());
     }
 

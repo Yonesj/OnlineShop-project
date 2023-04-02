@@ -12,7 +12,7 @@ public class MainPanel {
     }
 
     public static void mainPage(){
-        System.out.println("[1] Sign up\n[2] Sign in\n[3] Products\n[4] Exit");
+        System.out.printf("\n[1] Sign up\n[2] Sign in\n[3] Products\n[4] Exit\n>>");
 
         int input = scanner.nextInt();
 
@@ -38,13 +38,14 @@ public class MainPanel {
 
     static void loggin(){
         scanner.nextLine();
-        System.out.println("Enter your username:");
+        System.out.printf("\nEnter your username:\n>>");
         String inputUsername = scanner.nextLine();
-        System.out.println("Enter your password");
+        System.out.printf("Enter your password\n>>");
         String inputPass = scanner.nextLine();
 
         if(inputUsername.equals("admin") && inputPass.equals("admin1382")){
-
+            System.out.println("\nwelcome to Admin panel!");
+            AdminPanel.adminPage();
         }
     }
 }
