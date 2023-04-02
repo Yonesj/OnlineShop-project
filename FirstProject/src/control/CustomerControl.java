@@ -11,6 +11,10 @@ public class CustomerControl {
 
     }
 
+    public static void addCustomer(Customer customer){
+        customers.add(customer);
+    }
+
     public static ArrayList<Customer> getCustomers() {
         return customers;
     }

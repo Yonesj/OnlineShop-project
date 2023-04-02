@@ -23,6 +23,10 @@ public class Admin extends User {
                 ,"Email Address:",getEmailAddress(),"Phone Number:",getPhoneNumber());
     }
 
+    //remove methods
+    public void removeReq(int index){
+        requests.remove(index - 1);
+    }
     //getters
     public static Admin getAdmin() {
         if(admin == null){
@@ -37,5 +41,13 @@ public class Admin extends User {
 
     public ArrayList<Request> getRequests() {
         return requests;
+    }
+
+    public int getRequestLen(){
+        return requests.size();
+    }
+
+    public Request getRequest(int index){
+        return requests.get(index - 1);
     }
 }
