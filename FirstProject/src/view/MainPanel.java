@@ -1,5 +1,6 @@
 package view;
 
+import control.CustomerControl;
 import model.user.Admin;
 
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class MainPanel {
                 loggin();
                 break;
             case 2:
-
+                signIn();
                 break;
             case 3:
 
@@ -43,9 +44,24 @@ public class MainPanel {
         System.out.printf("Enter your password\n>>");
         String inputPass = scanner.nextLine();
 
-        if(inputUsername.equals("admin") && inputPass.equals("admin1382")){
+        if(inputUsername.equals("admin") && inputPass.equals("admin")){
             System.out.println("\nwelcome to Admin panel!");
             AdminPanel.adminPage();
         }
+    }
+
+    static void signIn(){
+        scanner.nextLine();
+        System.out.printf("\n###### SIGN IN ######\nusername:      ");
+        String inputUsername = scanner.nextLine();
+        System.out.printf("email:         ");
+        String inputEmail = scanner.nextLine();
+        System.out.printf("phone number:  ");
+        String inpurPhone = scanner.nextLine();
+        System.out.printf("password:      ");
+        String inputPass = scanner.nextLine();
+
+        System.out.println(CustomerControl.signIn(inputUsername,inputEmail,inpurPhone,inputPass));
+        mainPage();
     }
 }

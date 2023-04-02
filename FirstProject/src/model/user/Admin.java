@@ -23,6 +23,10 @@ public class Admin extends User {
                 ,"Email Address:",getEmailAddress(),"Phone Number:",getPhoneNumber());
     }
 
+    public void addRequest(Request request){
+        requests.add(request);
+    }
+
     //remove methods
     public void removeReq(int index){
         requests.remove(index - 1);
@@ -30,7 +34,7 @@ public class Admin extends User {
     //getters
     public static Admin getAdmin() {
         if(admin == null){
-            admin = new Admin("admin","admin@gmail.com","09123456789","admin1382");
+            admin = new Admin("admin","admin@gmail.com","09123456789","admin");
         }
         return admin;
     }
