@@ -1,7 +1,6 @@
 package view;
 
-import control.CustomerControl;
-import model.user.Admin;
+import control.*;
 import model.user.Customer;
 
 import java.util.Scanner;
@@ -14,7 +13,7 @@ public class MainPanel {
     }
 
     public static void mainPage(){
-        System.out.printf("\n[1] Sign up\n[2] Sign in\n[3] Products\n[4] Exit\n>>");
+        System.out.printf("[1] Sign up\n[2] Sign in\n[3] Products\n[4] Exit\n>>");
 
         int input = scanner.nextInt();
 
@@ -45,29 +44,9 @@ public class MainPanel {
         System.out.printf("Enter your password\n>>");
         String inputPass = scanner.nextLine();
 
-        if(inputUsername.equals("admin") && inputPass.equals("admin")){
-            System.out.println("\nwelcome to Admin panel!");
-            AdminPanel.adminPage();
-        }
-
-        boolean found = false;
-        for (Customer customer: CustomerControl.getCustomers()){
-            if(customer.getUsername().equals(inputUsername)){
-                found = true;
-                if(customer.getPassword().equals(inputPass)){
-                    CustomPanel customPanel = new CustomPanel(customer);
-                    customPanel.customerPage();
-                }else {
-                    System.out.println("password is wrong!");
-                    loggin();
-                }
-            }
-        }
-
-        if(!found){
-            System.out.println("no account with this username has been fount! ");
-            loggin();
-        }
+        AdminControl.loggin(inputUsername,inputPass);
+        System.out.println(CustomerControl.loggin(inputUsername,inputPass));
+        loggin();
     }
 
     static void signIn(){

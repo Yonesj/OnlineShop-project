@@ -29,13 +29,17 @@ public abstract class Commodity {
         this.price = price;
         this.stock = stock;
         this.category = category;
+        this.ID = idBuilder();
     }
 
     //making unique ID
-    StringBuilder idBuilder = new StringBuilder(name.substring(0,3))
-            .append(category.toString().substring(0,4))
-            .append(price);
-
+    StringBuilder id = new StringBuilder();
+    public String idBuilder(){
+        id.append(name)
+                .append(category.toString().substring(0,4))
+                .append(Math.round(price));
+        return id.toString();
+    }
     //getters
     public String getID() {
         return ID;

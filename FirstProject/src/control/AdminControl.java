@@ -5,11 +5,12 @@ import model.connectors.RequestType;
 import model.user.*;
 import model.connectors.Request;
 import model.commodity.*;
+import view.AdminPanel;
 
 public class AdminControl {
     private static Admin admin = Admin.getAdmin();
     public static String processCommand(String command){
-        String[] subString = command.split(" ");
+        String[] subString = command.split("--");
 
         switch (subString[0]){
             case "Add":
@@ -226,24 +227,45 @@ public class AdminControl {
                     return  "out of bound error!";
                 }
 
-            case "Help":
-                return String.format("%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
+            case "help":
+                return String.format("%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
                         "COMMAND","FUNCTION",
-                        "Add","Add a product to the shop",
-                        "Edit","Edit information of a product",
-                        "Help","Provides Help information for Admin commands.",
+                        "Add","Add a product to the shop.",
+                        "Edit","Edit information of a product.",
+                        "help","Provides Help information for Admin commands.",
+                        "Help","provides specific information about Add command.",
+                        "Logout","Call the main panel.",
                         "ManageRequest","Mange user s requests.",
                         "Remove","Remove a product from the shop.",
                         "View","Display information of users or requests.",
                         "How to use:",
-                        "Add             [department] [name] [price] [stock] [special info]",
+                        "Add             [department] [name] [price] [stock] [special argumans]",
                         "Edit            [id] [new name] [new price] [new stock] (put 0 for those you dont want to chang)",
                         "Remove          [id]",
                         "View            [users / requests]",
                         "MangeRequest    [index] [accept / reject]");
 
+            case "Help":
+                return String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
+                        "Add car       [name] [price] [stock] [company name] [engine volume] [is it auto]",
+                        "Add bicycle   [name] [price] [stock] [company name] [bicycle Type]",
+                        "Add pc        [name] [price] [stock] [weight] [size] [cpu model] [ram memory]",
+                        "Add usb       [name] [price] [stock] [weight] [size] [capacity] [usb version]",
+                        "Add ssd       [name] [price] [stock] [weight] [size] [capacity] [reading speed] [writing speed]",
+                        "Add notebook  [name] [price] [stock] [Made in] [sheets] [paper type]",
+                        "Add pen       [name] [price] [stock] [Made in] [color]",
+                        "Add pencil    [name] [price] [stock] [Made in] [pencil type]",
+                        "Add food      [name] [price] [stock] [manufacture Date] [expiration Date]");
+
             default:
                 return "invalid command,use help";
+        }
+    }
+
+    public static void loggin(String inputUsername,String inputPassword){
+        if(inputUsername.equals("admin") && inputPassword.equals("admin")){
+            System.out.println("\nwelcome to Admin panel!");
+            AdminPanel.adminPage();
         }
     }
 
