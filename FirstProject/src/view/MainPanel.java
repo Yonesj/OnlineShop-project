@@ -2,6 +2,7 @@ package view;
 
 import control.CustomerControl;
 import model.user.Admin;
+import model.user.Customer;
 
 import java.util.Scanner;
 
@@ -47,6 +48,25 @@ public class MainPanel {
         if(inputUsername.equals("admin") && inputPass.equals("admin")){
             System.out.println("\nwelcome to Admin panel!");
             AdminPanel.adminPage();
+        }
+
+        boolean found = false;
+        for (Customer customer: CustomerControl.getCustomers()){
+            if(customer.getUsername().equals(inputUsername)){
+                found = true;
+                if(customer.getPassword().equals(inputPass)){
+                    CustomPanel customPanel = new CustomPanel(customer);
+                    customPanel.customerPage();
+                }else {
+                    System.out.println("password is wrong!");
+                    loggin();
+                }
+            }
+        }
+
+        if(!found){
+            System.out.println("no account with this username has been fount! ");
+            loggin();
         }
     }
 

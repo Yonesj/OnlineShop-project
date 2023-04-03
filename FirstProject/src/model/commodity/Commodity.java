@@ -88,8 +88,4 @@ public abstract class Commodity {
         }
         this.stock = stock;
     }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }

@@ -5,10 +5,10 @@ import model.commodity.Category;
 public class PersonalComputer extends Electronic{
     //instance variables
     private String cpuModel;
-    private String ramMemmory;
+    private int ramMemmory;
 
     //constructor
-    public PersonalComputer(String name,double price,int stock,double weight,String size,String cpuModel,String ramMemmory){
+    public PersonalComputer(String name,double price,int stock,double weight,String size,String cpuModel,int ramMemmory){
         super(name,price,stock,weight,size);
         this.cpuModel = cpuModel;
         this.ramMemmory = ramMemmory;
@@ -20,7 +20,7 @@ public class PersonalComputer extends Electronic{
         return cpuModel;
     }
 
-    public String getRamMemmory() {
+    public int getRamMemmory() {
         return ramMemmory;
     }
 }

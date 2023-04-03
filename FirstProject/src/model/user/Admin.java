@@ -23,14 +23,24 @@ public class Admin extends User {
                 ,"Email Address:",getEmailAddress(),"Phone Number:",getPhoneNumber());
     }
 
+    //add methods
     public void addRequest(Request request){
         requests.add(request);
+    }
+
+    public void addCommodity(Commodity commodity){
+        commodityList.add(commodity);
     }
 
     //remove methods
     public void removeReq(int index){
         requests.remove(index - 1);
     }
+
+    public void removeCom(Commodity commodity){
+        commodityList.remove(commodity);
+    }
+
     //getters
     public static Admin getAdmin() {
         if(admin == null){
