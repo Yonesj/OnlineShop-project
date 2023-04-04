@@ -53,6 +53,18 @@ public class Admin extends User {
         return commodityList;
     }
 
+    public int getCommoditylistLen(){
+        return commodityList.size();
+    }
+
+    public Commodity getCommodity(int index){
+        if(commodityList.size() > index) {
+            return commodityList.get(index);
+        }else {
+            return null;
+        }
+    }
+
     public ArrayList<Request> getRequests() {
         return requests;
     }

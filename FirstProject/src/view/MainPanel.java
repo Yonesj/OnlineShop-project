@@ -13,7 +13,7 @@ public class MainPanel {
     }
 
     public static void mainPage(){
-        System.out.printf("[1] Sign up\n[2] Sign in\n[3] Products\n[4] Exit\n>>");
+        System.out.printf("[1] Sign up\n[2] Sign in\n[3] Products Panel\n[4] Exit\n>>");
 
         int input = scanner.nextInt();
 
@@ -25,7 +25,7 @@ public class MainPanel {
                 signIn();
                 break;
             case 3:
-
+                CommodityPanel commodityPanel = new CommodityPanel();
                 break;
             case 4:
                 break;

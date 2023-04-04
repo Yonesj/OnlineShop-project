@@ -12,16 +12,16 @@ public class AdminControl {
     public static String processCommand(String command){
         String[] subString = command.split("--");
 
-        switch (subString[0]){
+        switch (subString[0].trim()){
             case "Add":
                 String name = subString[2];
-                double price = Double.parseDouble(subString[3]);
-                int stock = Integer.parseInt(subString[4]);
+                double price = Double.parseDouble(subString[3].trim());
+                int stock = Integer.parseInt(subString[4].trim());
 
-                switch (subString[1]){
+                switch (subString[1].trim()){
                     case "car":
                         String company = subString[5];
-                        double engineVolume = Double.parseDouble(subString[6]);
+                        double engineVolume = Double.parseDouble(subString[6].trim());
                         boolean isAuto = Boolean.parseBoolean(subString[7]);
                         Car car = new Car(name,price,stock,company,engineVolume,isAuto);
                         admin.addCommodity(car);
@@ -30,7 +30,7 @@ public class AdminControl {
                     case "bicycle":
                         String companyB = subString[5];
                         BicycleType bicycleType;
-                        switch (subString[6]){
+                        switch (subString[6].trim()){
                             case "hybryd":
                                 bicycleType = BicycleType.HYBRYD;
                                 break;
@@ -51,16 +51,16 @@ public class AdminControl {
                         return "task completed successfully";
 
                     case "pc":
-                        double pcWeight = Double.parseDouble(subString[5]);
+                        double pcWeight = Double.parseDouble(subString[5].trim());
                         String pcSize = subString[6];
                         String cpuModel = subString[7];
-                        int ramMemory = Integer.parseInt(subString[8]);
+                        int ramMemory = Integer.parseInt(subString[8].trim());
                         PersonalComputer pc = new PersonalComputer(name,price,stock,pcWeight,pcSize,cpuModel,ramMemory);
                         admin.addCommodity(pc);
                         return "task completed successfully";
 
                     case "usb":
-                        double usbWeight = Double.parseDouble(subString[5]);
+                        double usbWeight = Double.parseDouble(subString[5].trim());
                         String usbSize = subString[6];
                         String usbCapacity = subString[7];
                         String usbVersion = subString[8];
@@ -69,18 +69,18 @@ public class AdminControl {
                         return "task completed successfully";
 
                     case "ssd":
-                        double ssdWeight = Double.parseDouble(subString[5]);
+                        double ssdWeight = Double.parseDouble(subString[5].trim());
                         String ssdSize = subString[6];
                         String ssdCapacity = subString[7];
-                        double readingSpeed = Double.parseDouble(subString[8]);
-                        double writingSpeed = Double.parseDouble(subString[9]);
+                        double readingSpeed = Double.parseDouble(subString[8].trim());
+                        double writingSpeed = Double.parseDouble(subString[9].trim());
                         SSD ssd = new SSD(name,price,stock,ssdWeight,ssdSize,ssdCapacity,readingSpeed,writingSpeed);
                         admin.addCommodity(ssd);
                         return "task completed successfully";
 
                     case "notebook":
                         String madeIN1 = subString[5];
-                        int sheets = Integer.parseInt(subString[6]);
+                        int sheets = Integer.parseInt(subString[6].trim());
                         String paperType = subString[7];
                         NoteBook noteBook = new NoteBook(name,price,stock,madeIN1,sheets,paperType);
                         admin.addCommodity(noteBook);
@@ -96,7 +96,7 @@ public class AdminControl {
                     case "pencil":
                         String madeIN3 = subString[5];
                         PencilType pencilType;
-                        switch (subString[6]){
+                        switch (subString[6].trim()){
                             case "HB":
                                 pencilType = PencilType.HB;
                                 break;
@@ -133,8 +133,8 @@ public class AdminControl {
             case "Edit":
                 String id = subString[1];
                 String newName = subString[2];
-                double newPrice = Double.parseDouble(subString[3]);
-                int newStock = Integer.parseInt(subString[4]);
+                double newPrice = Double.parseDouble(subString[3].trim());
+                int newStock = Integer.parseInt(subString[4].trim());
                 boolean found = false;
                 for (Commodity commodity: admin.getCommodityList()){
                     if(commodity.getID().equals(id)){
@@ -173,7 +173,7 @@ public class AdminControl {
 
 
             case "View":
-                switch (subString[1]){
+                switch (subString[1].trim()){
                     case "users":
                         StringBuilder viewUsers = new StringBuilder();
                         for (Customer customer: CustomerControl.getCustomers()) {
@@ -197,7 +197,7 @@ public class AdminControl {
                 }
 
             case "ManageRequest":
-                int index = Integer.parseInt(subString[1]);
+                int index = Integer.parseInt(subString[1].trim());
                 boolean isAccepted;
 
                 if(subString[2].equals("accept")){

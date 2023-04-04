@@ -105,4 +105,27 @@ public class CustomerControl {
 
         return "information has been edited successfully!";
     }
+
+    public static String viewCart(Customer customer){
+        return "";
+    }
+
+    public static String increaseCreditReq(Customer customer,String creditCard,int password,String cvv2,double amount){
+        Pattern cardPattern = Pattern.compile("\\d{4}( |-)\\d{4}( |-)\\d{4}( |-)\\d{4}");
+        Pattern cvv2Pattern = Pattern.compile("\\d{3,4}");
+
+        if(!cardPattern.matcher(creditCard).find()){
+            return "invalid credit card";
+        }
+        if(!cvv2Pattern.matcher(cvv2).find()){
+            return "invalid cvv2!";
+        }
+        if(amount <= 0){
+            return "amount could not be negetive!";
+        }
+
+        Request request = new Request(customer,amount);
+        admin.addRequest(request);
+        return "your request has been sent to admin";
+    }
 }
