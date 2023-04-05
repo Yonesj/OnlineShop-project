@@ -21,6 +21,10 @@ public class CommodityControl {
     private boolean vehicleFilter = false;
     private boolean carFilter = false;
     private boolean bicycleFilter = false;
+    private boolean avaliableFilter= false;
+    private double priceUPlimit = -1;
+    private double priceDOWNlimit = -1;
+    private float scoreLimit = 0;
 
     public CommodityControl(){
         admin = Admin.getAdmin();
@@ -31,6 +35,20 @@ public class CommodityControl {
         Seed.clear();
         if(foodFilter || electronicFilter || vehicleFilter || stationeryFilter || pcFilter|| dataStorageFilter || carFilter || bicycleFilter|| noteBookFilter || pencilFilter || penFilter){
             for (Commodity commodity : admin.getCommodityList()){
+                //general filters
+                if(commodity.getAveScore() < scoreLimit){
+                    continue;
+                }
+                if(avaliableFilter && (commodity.getStock() == 0)){
+                    continue;
+                }
+                if(priceDOWNlimit != -1 && (commodity.getPrice() < priceDOWNlimit)){
+                    continue;
+                }
+                if(priceUPlimit != -1 && (commodity.getPrice() > priceUPlimit)){
+                    continue;
+                }
+                //filter by department
                 if(foodFilter && commodity instanceof Food){
                     Seed.add(commodity);
                 }else if(electronicFilter && commodity instanceof Electronic){
@@ -56,7 +74,22 @@ public class CommodityControl {
                 }
             }
         }else {
-            Seed.addAll(admin.getCommodityList());
+            for (Commodity commodity : admin.getCommodityList()) {
+                if(commodity.getAveScore() < scoreLimit){
+                    continue;
+                }
+                if(avaliableFilter && (commodity.getStock() == 0)){
+                    continue;
+                }
+                if(priceDOWNlimit != -1 && (commodity.getPrice() < priceDOWNlimit)){
+                    continue;
+                }
+                if(priceUPlimit != -1 && (commodity.getPrice() > priceUPlimit)){
+                    continue;
+                }
+
+                Seed.add(commodity);
+            }
         }
     }
 
@@ -166,7 +199,19 @@ public class CommodityControl {
         this.bicycleFilter = bicycleFilter;
     }
 
-    public void Filter(){
+    public void setAvaliableFilter(boolean avaliableFilter) {
+        this.avaliableFilter = avaliableFilter;
+    }
 
+    public void setPriceUPlimit(double priceUPlimit) {
+        this.priceUPlimit = priceUPlimit;
+    }
+
+    public void setPriceDOWNlimit(double priceDOWNlimit) {
+        this.priceDOWNlimit = priceDOWNlimit;
+    }
+
+    public void setScoreLimit(float scoreLimit) {
+        this.scoreLimit = scoreLimit;
     }
 }

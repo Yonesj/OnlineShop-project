@@ -25,7 +25,7 @@ public class CommodityPanel {
         for (int i=0; i < 3; i++){
             for (int j = 0; j < 3; j++) {
                 if((commodityControl.getSeed(commodityIndex)) != null) {
-                    page[i][j] = admin.getCommodity(commodityIndex);
+                    page[i][j] = commodityControl.getSeed(commodityIndex);
                     commodityIndex++;
                 }
             }
@@ -189,6 +189,40 @@ public class CommodityPanel {
     }
     public void filter(){
         scanner.nextLine();
-        System.out.println("[]");
+        System.out.println("[1] Filter by Price\n[2] Filter by score\n[3] َAvailables\n[4] Reset Filters\n>>");
+        int input3 = scanner.nextInt();
+
+        switch (input3){
+            case 1:
+                System.out.printf("upper limit:     ");
+                double upLimit = scanner.nextDouble();
+                System.out.printf("lower limit:     ");
+                double downLimet = scanner.nextDouble();
+
+                commodityControl.setPriceDOWNlimit(downLimet);
+                commodityControl.setPriceUPlimit(upLimit);
+                showPage(1);
+                break;
+
+            case 2:
+                System.out.printf("Score limit:      ");
+                float scoreLimit = scanner.nextFloat();
+                commodityControl.setScoreLimit(scoreLimit);
+                showPage(1);
+                break;
+
+            case 3:
+                commodityControl.setAvaliableFilter(true);
+                showPage(1);
+                break;
+
+            case 4:
+                commodityControl.setAvaliableFilter(false);
+                commodityControl.setPriceUPlimit(-1);
+                commodityControl.setPriceDOWNlimit(-1);
+                commodityControl.setScoreLimit(0);
+                showPage(1);
+                break;
+        }
     }
 }
