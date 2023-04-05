@@ -12,6 +12,11 @@ public class Car extends Vehicle{
         this.isAuto = isAuto;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%f%-20s%b",super.toString() , "\nEngine Volume:" , getEngineVolume() , "\nAuto:" , isAuto());
+    }
+
     public double getEngineVolume() {
         return engineVolume;
     }

@@ -15,6 +15,12 @@ public abstract class Electronic extends Commodity {
         this.size = size;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s\n%s%-20s%f%-20s%s",super.toString() ,"Technical Details:\n",
+                "weight:" , getWeight() , "\nSize:" , getSize());
+    }
+
     //getters
     public double getWeight() {
         return weight;

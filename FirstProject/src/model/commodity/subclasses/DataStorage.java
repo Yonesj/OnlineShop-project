@@ -9,6 +9,11 @@ public abstract class DataStorage extends Electronic {
         this.capacity = capacity;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%s",super.toString() , "\nCapacity:" , getCapacity());
+    }
+
     //getter
     public String getCapacity(){
         return capacity;

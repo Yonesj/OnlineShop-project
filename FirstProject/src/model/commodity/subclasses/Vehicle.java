@@ -11,6 +11,11 @@ public abstract class Vehicle extends Commodity {
         this.company = company;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s\n%s%-20s%s",super.toString() , "Technical Details:\n" , "Company:" , getCompany());
+    }
+
     public String getCompany() {
         return company;
     }

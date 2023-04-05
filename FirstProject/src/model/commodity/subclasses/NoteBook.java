@@ -10,6 +10,10 @@ public class NoteBook extends Stationery{
         this.paperType = paperType;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%d%-20s%s",super.toString() , "\nSheets:" , getSheets() , "\nPaper Type:" , getPaperType());
+    }
     public int getSheets() {
         return sheets;
     }

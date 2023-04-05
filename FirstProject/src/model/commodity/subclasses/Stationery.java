@@ -12,6 +12,11 @@ public abstract class Stationery extends Commodity {
         this.madeIN = madeIN;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s\n%s%-20s%s",super.toString() , "Technical Details:\n" , "Maid in:" , getMadeIN());
+    }
+
     //getter
     public String getMadeIN() {
         return madeIN;

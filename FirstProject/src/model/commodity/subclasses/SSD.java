@@ -11,6 +11,11 @@ public class SSD extends DataStorage {
         this.writingSpeed = writingSpeed;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%f%-20s%f",super.toString() + "\nReading Speed:" + getReadingSpeed() + "\nWriting Speed:" + getWritingSpeed());
+    }
+
     //getter
     public double getReadingSpeed() {
         return readingSpeed;

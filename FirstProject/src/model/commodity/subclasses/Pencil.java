@@ -8,6 +8,11 @@ public class Pencil extends Stationery {
         this.pencilType = pencilType;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%s",super.toString() , "\nType:" , getPencilType());
+    }
+
     public PencilType getPencilType() {
         return pencilType;
     }

@@ -9,6 +9,11 @@ public class USB extends DataStorage {
         this.usbVersion = usbVersion;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%s",super.toString() , "\nUSB Version:" , getUsbVersion());
+    }
+
     //getter
     public String getUsbVersion() {
         return usbVersion;

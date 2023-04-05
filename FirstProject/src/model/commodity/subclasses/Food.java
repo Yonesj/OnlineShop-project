@@ -15,6 +15,12 @@ public class Food extends Commodity {
         this.expirationDate = expirationDate;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s\n%s%-20s%s%-20s%s" ,super.toString() , "Technical Details:\n" ,
+                "Manufacture Date:" ,  getManufactureDate() , "\nExpiration Date: " , getExpirationDate());
+    }
+
     //getters
     public String getManufactureDate() {
         return manufactureDate;

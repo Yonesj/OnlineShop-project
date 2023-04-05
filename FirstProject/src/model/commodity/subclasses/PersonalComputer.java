@@ -14,8 +14,12 @@ public class PersonalComputer extends Electronic{
         this.ramMemmory = ramMemmory;
     }
 
-    //getters
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%s%-20s%d",super.toString() , "\nCPU:" , getCpuModel() , "\nRam:" , getRamMemmory());
+    }
 
+    //getters
     public String getCpuModel() {
         return cpuModel;
     }

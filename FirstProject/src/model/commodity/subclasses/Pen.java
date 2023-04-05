@@ -8,6 +8,11 @@ public class Pen extends Stationery{
         this.color = color;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s%-20s%s",super.toString() , "\nColor:" , getColor());
+    }
+
     public String getColor() {
         return color;
     }

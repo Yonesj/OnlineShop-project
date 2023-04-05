@@ -2,12 +2,13 @@ package view;
 
 import control.CommodityControl;
 import model.commodity.Commodity;
-import model.user.Admin;
+import model.user.*;
 
 import java.util.Scanner;
 
 public class CommodityPanel {
     private Admin admin = Admin.getAdmin();
+    private Customer customer;
     private CommodityControl commodityControl;
     private Scanner scanner;
     private int pages = (int) Math.ceil(admin.getCommoditylistLen() / 9.0);
@@ -15,6 +16,13 @@ public class CommodityPanel {
     public CommodityPanel(){
         scanner = new Scanner(System.in);
         commodityControl = new CommodityControl();
+        showPage(1);
+    }
+
+    public CommodityPanel(Customer customer){
+        scanner = new Scanner(System.in);
+        commodityControl = new CommodityControl();
+        this.customer = customer;
         showPage(1);
     }
     public void showPage(int pageNumber){
@@ -79,6 +87,8 @@ public class CommodityPanel {
 
         switch (command){
             case 1:
+                search();
+                break;
             case 2:
                 shopByDepartment();
                 break;
@@ -93,6 +103,23 @@ public class CommodityPanel {
                 break;
         }
     }
+
+
+    public void search(){
+        scanner.nextLine();
+        System.out.printf("Enter the ID:\n>>");
+        String inputID = scanner.nextLine();
+
+        for(Commodity commodity : admin.getCommodityList()){
+            if(inputID.equals(commodity.getID())){
+                System.out.println(commodity.toString());
+            }
+        }
+
+        System.out.println("no product with this id found!");
+        showPage(1);
+    }
+
 
     public void shopByDepartment(){
         scanner.nextLine();

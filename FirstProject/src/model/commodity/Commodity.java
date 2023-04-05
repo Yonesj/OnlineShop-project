@@ -40,6 +40,28 @@ public abstract class Commodity {
                 .append(Math.round(price));
         return id.toString();
     }
+
+    @Override
+    public String toString(){
+        StringBuilder commentStrings = new StringBuilder();
+        if(comments != null) {
+            for (Comment comment : comments) {
+                commentStrings.append(comment.getCustomer().getUsername() + " :      " + comment.getText() + "\n");
+                if (comment.isBuyed()) {
+                    commentStrings.append("user has buyed this product");
+                } else {
+                    commentStrings.append("user hasn't buyed this product");
+                }
+                commentStrings.append("-----------------------------------------------------------------------------------------\n");
+            }
+        }
+        return String.format("\n%s\nPrice: %s\nScore: %s\nID: %s\n%s\n%s\n%s%s",
+                getName(),getPrice(),getAveScore(),getID(),(getStock() == 0) ? "out of stock" : "only %d left in stock",getStock(),
+                "Comments", "-----------------------------------------------------------------------------------------\n",
+                commentStrings.toString());
+    }
+
+
     //getters
     public String getID() {
         return ID;
