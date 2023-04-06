@@ -9,6 +9,7 @@ import model.commodity.*;
 import view.AdminPanel;
 
 public class AdminControl {
+    static int count = 0;
     private static Admin admin = Admin.getAdmin();
     public static String processCommand(String command){
         String[] subString = command.split("--");
@@ -164,6 +165,8 @@ public class AdminControl {
                 for (Commodity commodity: admin.getCommodityList()){
                     if(commodity.getID().equals(ID)){
                         admin.removeCom(commodity);
+                        found2 = true;
+                        break;
                     }
                 }
                 if(found2){
@@ -183,12 +186,11 @@ public class AdminControl {
                         return viewUsers.toString();
 
                     case "requests":
-                        int counts = 1;
+//                        int counts = 1;
                         StringBuilder viewRequests = new StringBuilder();
                         for (Request request: admin.getRequests()) {
-                            if(request != null){
-                                viewRequests.append("#" + counts + " ");
-                            }
+                            viewRequests.append("\n#" + count + " ");
+                            count++;
                             viewRequests.append(request.toString());
                         }
                         return viewRequests.toString();
@@ -210,7 +212,12 @@ public class AdminControl {
                 }
 
                 if(index >= 1 && index <= admin.getRequestLen()){
-                    Request request = admin.getRequest(index);
+                    Request request;
+                    if(admin.getRequest(index) != null) {
+                        request = admin.getRequest(index);
+                    }else {
+                        return "null pointer!";
+                    }
 
                     if(request.getRequestType() == RequestType.SIGNIN){
                         if(isAccepted) {
@@ -261,7 +268,7 @@ public class AdminControl {
                         "MangeRequest    [index] [accept / reject]");
 
             case "Help":
-                return String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
+                return String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
                         "Add car       [name] [price] [stock] [company name] [engine volume] [is it auto]",
                         "Add bicycle   [name] [price] [stock] [company name] [bicycle Type]",
                         "Add pc        [name] [price] [stock] [weight] [size] [cpu model] [ram memory]",

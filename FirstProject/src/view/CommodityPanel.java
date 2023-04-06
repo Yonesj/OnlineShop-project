@@ -105,6 +105,8 @@ public class CommodityPanel {
             case 6:
                 MainPanel.mainPage();
                 break;
+            default:
+                showPage(1);
         }
     }
 
@@ -117,7 +119,7 @@ public class CommodityPanel {
         for(Commodity commodity : admin.getCommodityList()){
             if(inputID.equals(commodity.getID())){
                 System.out.println(commodity.toString());
-                System.out.println("[1] back      ");
+                System.out.printf("[1] back      ");
                 if(customer != null){
                     System.out.println("[2]Add to the cart      [3] Comment      [4] Score");
                 }
@@ -137,6 +139,8 @@ public class CommodityPanel {
                         comment(customer,commodity);
                         break;
                     case 4:
+                        score(customer,commodity);
+                        break;
                 }
             }
         }
@@ -295,6 +299,7 @@ public class CommodityPanel {
     }
 
     public void comment(Customer customer,Commodity commodity){
+       scanner.nextLine();
         System.out.printf("text>>");
         String inputText = scanner.nextLine();
         boolean isBuyes = false;
@@ -334,6 +339,7 @@ public class CommodityPanel {
         float inputScore = scanner.nextFloat();
 
         Score score = new Score(customer,inputScore,commodity);
+        commodity.addScore(score);
         showPage(1);
     }
 }

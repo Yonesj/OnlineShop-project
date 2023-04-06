@@ -1,6 +1,7 @@
 package view;
 import control.CommodityControl;
 import control.CustomerControl;
+import model.connectors.Invoice;
 import model.user.Customer;
 import model.commodity.Commodity;
 
@@ -17,13 +18,13 @@ public class CustomPanel {
     }
 
     public void customerPage(){
-        System.out.printf("welcome to your panel %s\n[1] Edit personal info\n[2] Cart\n[3] Increase Credit\n[4] Product Panel", customer.getUsername());
+        System.out.printf("welcome to your panel %s\n[1] View personal info\n[2] Cart\n[3] Increase Credit\n[4] Product Panel\n[5] Shopping History\n[6] Logout\n>>", customer.getUsername());
 
         int input = scanner.nextInt();
 
         switch (input){
             case 1:
-                editInfo();
+                viewInfo();
             case 2:
                 viewCart();
             case 3:
@@ -32,6 +33,25 @@ public class CustomPanel {
                 CommodityPanel commodityPanel = new CommodityPanel(customer);
                 commodityPanel.showPage(1);
                 break;
+            case 5:
+                viewShoppinHistory();
+                customerPage();
+                break;
+            case 6:
+                MainPanel.mainPage();
+                break;
+        }
+    }
+
+    private void viewInfo(){
+        System.out.println(customer.toString());
+        System.out.println("[1] back      [2] Edit");
+        int input = scanner.nextInt();
+
+        if(input == 2){
+            editInfo();
+        }else {
+            customerPage();
         }
     }
 
@@ -61,6 +81,7 @@ public class CustomPanel {
                 break;
             case 2:
                 System.out.println(CustomerControl.finalizePurchase(customer));
+                customerPage();
                 break;
             case 3:
                 customer.clearCart();
@@ -75,6 +96,7 @@ public class CustomPanel {
         String creditCard = scanner.nextLine();
         System.out.printf("password:      ");
         int password = scanner.nextInt();
+        scanner.nextLine();
         System.out.printf("CVV2:          ");
         String cvv2 = scanner.nextLine();
         System.out.printf("Amount:        ");
@@ -82,5 +104,13 @@ public class CustomPanel {
 
         System.out.println(CustomerControl.increaseCreditReq(customer,creditCard,password,cvv2,amount));
         customerPage();
+    }
+
+    private void viewShoppinHistory(){
+        for (Invoice invoice : customer.getShoppinHistory()){
+            for (Commodity commodity: invoice.getCommodities()){
+                System.out.println(commodity.toString());
+            }
+        }
     }
 }

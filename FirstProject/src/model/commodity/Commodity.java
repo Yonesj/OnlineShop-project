@@ -29,6 +29,8 @@ public abstract class Commodity {
         this.price = price;
         this.stock = stock;
         this.category = category;
+        comments = new ArrayList<>();
+        scores = new ArrayList<>();
         this.ID = idBuilder();
     }
 

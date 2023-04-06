@@ -148,6 +148,7 @@ public class CustomerControl {
             return "not enough credit!";
         }
 
+        customer.setCredit(customer.getCredit() - amount);
         Invoice invoice = new Invoice(amount,"1402/01/14");
 
         for (Commodity commodity: customer.getCart()){

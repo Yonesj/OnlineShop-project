@@ -74,6 +74,10 @@ public class Admin extends User {
     }
 
     public Request getRequest(int index){
-        return requests.get(index - 1);
+        if(requests.get(index -1) != null) {
+            return requests.get(index - 1);
+        }else {
+            return null;
+        }
     }
 }
