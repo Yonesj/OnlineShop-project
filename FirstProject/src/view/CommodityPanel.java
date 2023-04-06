@@ -2,7 +2,7 @@ package view;
 
 import control.CommodityControl;
 import model.commodity.Commodity;
-import model.connectors.Comment;
+import model.connectors.*;
 import model.user.*;
 
 import java.util.Scanner;
@@ -134,8 +134,9 @@ public class CommodityPanel {
                         break;
 
                     case 3:
-                        comment();
+                        comment(customer,commodity);
                         break;
+                    case 4:
                 }
             }
         }
@@ -293,8 +294,46 @@ public class CommodityPanel {
         showPage(1);
     }
 
-    public void comment(){
+    public void comment(Customer customer,Commodity commodity){
         System.out.printf("text>>");
         String inputText = scanner.nextLine();
+        boolean isBuyes = false;
+
+        for (Invoice invoice: customer.getShoppinHistory()){
+            for (Commodity commodity1 : invoice.getCommodities()){
+                if(commodity.getID().equals(commodity1.getID())){
+                    isBuyes = true;
+                    break;
+                }
+            }
+        }
+
+        Comment comment = new Comment(customer,commodity.getID(),inputText,isBuyes, Status.WAITING);
+        Request commentRequest = new Request(customer,comment,commodity);
+        admin.addRequest(commentRequest);
+        System.out.println("your request has been sent to the admin!");
+        showPage(1);
+    }
+
+    public void score(Customer customer,Commodity commodity){
+        boolean isBuyed = false;
+        for (Invoice invoice: customer.getShoppinHistory()){
+            for (Commodity commodity1 : invoice.getCommodities()){
+                if(commodity.getID().equals(commodity1.getID())){
+                    isBuyed = true;
+                }
+            }
+        }
+
+        if(!isBuyed){
+            System.out.println( "you have to buy product first!");
+            showPage(1);
+        }
+
+        System.out.printf("Enter your score to this product [0 - 5]\n>>");
+        float inputScore = scanner.nextFloat();
+
+        Score score = new Score(customer,inputScore,commodity);
+        showPage(1);
     }
 }

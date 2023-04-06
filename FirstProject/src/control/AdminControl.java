@@ -2,6 +2,7 @@ package control;
 
 import model.commodity.subclasses.*;
 import model.connectors.RequestType;
+import model.connectors.Status;
 import model.user.*;
 import model.connectors.Request;
 import model.commodity.*;
@@ -218,9 +219,23 @@ public class AdminControl {
                         admin.removeReq(index);
                         return "";
                     }else if(request.getRequestType() == RequestType.COMMENT){
+                        if(isAccepted){
+                            request.getComment().setStatus(Status.ACCEPTED);
+                            Commodity hold = request.getCommodity();
+                            hold.addComment(request.getComment());
+                        }else {
+                            request.getComment().setStatus(Status.REJECTED);
+                        }
+                        admin.removeReq(index);
+                        return "";
 
                     }else if(request.getRequestType() == RequestType.INCRESECREDIT){
-
+                        if(isAccepted){
+                            Customer hold = request.getCustomer();
+                            hold.setCredit(hold.getCredit() + request.getAmount());
+                        }
+                        admin.removeReq(index);
+                        return "";
                     }
 
                 }else {

@@ -46,13 +46,7 @@ public abstract class Commodity {
         StringBuilder commentStrings = new StringBuilder();
         if(comments != null) {
             for (Comment comment : comments) {
-                commentStrings.append(comment.getCustomer().getUsername() + " :      " + comment.getText() + "\n");
-                if (comment.isBuyed()) {
-                    commentStrings.append("user has buyed this product");
-                } else {
-                    commentStrings.append("user hasn't buyed this product");
-                }
-                commentStrings.append("-----------------------------------------------------------------------------------------\n");
+                commentStrings.append(comment.toString());
             }
         }
         return String.format("\n%s\nPrice: %s\nScore: %s\nID: %s\n%s\n%s\n%s%s",
@@ -61,6 +55,16 @@ public abstract class Commodity {
                 commentStrings.toString());
     }
 
+
+    //add methods
+    public void addComment(Comment comment){
+        comments.add(comment);
+    }
+
+    public void addScore(Score score){
+        scores.add(score);
+        calculateScore();
+    }
 
     //getters
     public String getID() {
@@ -113,5 +117,18 @@ public abstract class Commodity {
             throw new IllegalArgumentException("stock can't be negative!");
         }
         this.stock = stock;
+    }
+
+    //calculate score
+    public void calculateScore(){
+        double total = 0;
+        int counts = 0;
+
+        for (Score score: scores){
+            total += score.getScore();
+            counts++;
+        }
+
+        aveScore = total / counts;
     }
 }

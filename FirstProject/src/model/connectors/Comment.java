@@ -17,6 +17,13 @@ public class Comment {
         this.status = status;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s:      %s\n%s\n%s",
+                customer.getUsername(),text,(isBuyed) ? "user has buyed this product" : "user hasn't buyed this product",
+                "-----------------------------------------------------------------------------------------\n");
+    }
+
     //getters
     public Customer getCustomer() {
         return customer;

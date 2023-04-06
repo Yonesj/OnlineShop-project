@@ -51,4 +51,9 @@ public class Customer extends User {
     public void clearCart(){
         cart.clear();
     }
+
+    //setters
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
 }
