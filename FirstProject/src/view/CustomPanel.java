@@ -1,8 +1,11 @@
 package view;
+import control.CommodityControl;
 import control.CustomerControl;
 import model.user.Customer;
+import model.commodity.Commodity;
 
 import java.util.Scanner;
+
 
 public class CustomPanel {
     private Customer customer;
@@ -14,7 +17,7 @@ public class CustomPanel {
     }
 
     public void customerPage(){
-        System.out.printf("welcome to your panel %s\n[1] Edit personal info\n[2] Cart\n[3] Increase Credit", customer.getUsername());
+        System.out.printf("welcome to your panel %s\n[1] Edit personal info\n[2] Cart\n[3] Increase Credit\n[4] Product Panel", customer.getUsername());
 
         int input = scanner.nextInt();
 
@@ -25,6 +28,10 @@ public class CustomPanel {
                 viewCart();
             case 3:
                 purchasePage();
+            case 4:
+                CommodityPanel commodityPanel = new CommodityPanel(customer);
+                commodityPanel.showPage(1);
+                break;
         }
     }
 
@@ -42,6 +49,24 @@ public class CustomPanel {
     }
 
     private void viewCart(){
+        for (Commodity commodity : customer.getCart()) {
+            System.out.println(commodity.toString());
+        }
+        System.out.printf("[1] Back      [2] Complete purchase      [3] Clear Cart\n>>");
+        int input = scanner.nextInt();
+
+        switch (input){
+            case 1:
+                customerPage();
+                break;
+            case 2:
+                System.out.println(CustomerControl.finalizePurchase(customer));
+                break;
+            case 3:
+                customer.clearCart();
+                customerPage();
+                break;
+        }
     }
 
     private void purchasePage(){

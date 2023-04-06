@@ -1,5 +1,7 @@
 package control;
 
+import model.commodity.Commodity;
+import model.connectors.Invoice;
 import model.connectors.Request;
 import model.user.Admin;
 import model.user.Customer;
@@ -106,9 +108,6 @@ public class CustomerControl {
         return "information has been edited successfully!";
     }
 
-    public static String viewCart(Customer customer){
-        return "";
-    }
 
     public static String increaseCreditReq(Customer customer,String creditCard,int password,String cvv2,double amount){
         Pattern cardPattern = Pattern.compile("\\d{4}( |-)\\d{4}( |-)\\d{4}( |-)\\d{4}");
@@ -127,5 +126,36 @@ public class CustomerControl {
         Request request = new Request(customer,amount);
         admin.addRequest(request);
         return "your request has been sent to admin";
+    }
+
+    public static String finalizePurchase(Customer customer){
+        double amount = 0;
+
+        for (int i=0; i < customer.getCart().size(); i++){
+            amount += customer.getCart().get(i).getPrice();
+            int count = 1;
+            for (int j=i; j < customer.getCart().size(); j++){
+                if(customer.getCart().get(i) == customer.getCart().get(j)){
+                    count++;
+                }
+            }
+            if(count > customer.getCart().get(i).getStock()){
+                return "not enough stock!";
+            }
+        }
+
+        if(customer.getCredit() < amount){
+            return "not enough credit!";
+        }
+
+        Invoice invoice = new Invoice(amount,"1402/01/14");
+
+        for (Commodity commodity: customer.getCart()){
+            commodity.setStock(commodity.getStock() - 1);
+            invoice.addToList(commodity);
+        }
+        customer.AddToShoppinHistory(invoice);
+        customer.clearCart();
+        return "operation was successful!";
     }
 }

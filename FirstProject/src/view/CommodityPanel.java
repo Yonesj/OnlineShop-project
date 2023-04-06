@@ -2,6 +2,7 @@ package view;
 
 import control.CommodityControl;
 import model.commodity.Commodity;
+import model.connectors.Comment;
 import model.user.*;
 
 import java.util.Scanner;
@@ -80,9 +81,9 @@ public class CommodityPanel {
             System.out.println("[4] Prev        ");
         }
         if(pageNumber < pages){
-            System.out.printf("[5] Next");
+            System.out.printf("[5] Next         ");
         }
-        System.out.printf("\n>>");
+        System.out.printf("[6] Exit\n>>");
         int command = scanner.nextInt();
 
         switch (command){
@@ -101,6 +102,9 @@ public class CommodityPanel {
             case 5:
                 showPage(++pageNumber);
                 break;
+            case 6:
+                MainPanel.mainPage();
+                break;
         }
     }
 
@@ -113,6 +117,26 @@ public class CommodityPanel {
         for(Commodity commodity : admin.getCommodityList()){
             if(inputID.equals(commodity.getID())){
                 System.out.println(commodity.toString());
+                System.out.println("[1] back      ");
+                if(customer != null){
+                    System.out.println("[2]Add to the cart      [3] Comment      [4] Score");
+                }
+
+                int input = scanner.nextInt();
+
+                switch (input){
+                    case 1:
+                        showPage(1);
+                        break;
+
+                    case 2:
+                        addToCart(commodity);
+                        break;
+
+                    case 3:
+                        comment();
+                        break;
+                }
             }
         }
 
@@ -251,5 +275,26 @@ public class CommodityPanel {
                 showPage(1);
                 break;
         }
+    }
+
+
+    public void addToCart(Commodity commodity){
+        System.out.printf("how many item do you wanna purchase?\n>>");
+        int input2 = scanner.nextInt();
+        if(commodity.getStock() > input2) {
+            for (int i = 0; i < input2; i++) {
+                customer.AddToCart(commodity);
+            }
+            System.out.println("this product added to the cart successfully!");
+        }else {
+            System.out.println("not enough stock!");
+        }
+
+        showPage(1);
+    }
+
+    public void comment(){
+        System.out.printf("text>>");
+        String inputText = scanner.nextLine();
     }
 }

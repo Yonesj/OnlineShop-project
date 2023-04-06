@@ -25,6 +25,15 @@ public class Customer extends User {
                 ,"Email Address:",getEmailAddress(),"Phone Number:",getPhoneNumber(),"Credit:",getCredit());
     }
 
+    //add methods
+    public void AddToCart(Commodity commodity){
+        cart.add(commodity);
+    }
+
+    public void AddToShoppinHistory(Invoice invoice){
+        shoppinHistory.add(invoice);
+    }
+
     //getters
     public double getCredit() {
         return credit;
@@ -36,5 +45,10 @@ public class Customer extends User {
 
     public ArrayList<Invoice> getShoppinHistory() {
         return shoppinHistory;
+    }
+
+
+    public void clearCart(){
+        cart.clear();
     }
 }
