@@ -51,10 +51,10 @@ public abstract class Commodity {
                 commentStrings.append(comment.toString());
             }
         }
-        return String.format("\n%s\nPrice: %s\nScore: %s\nID: %s\n%s\n%s\n%s%s",
-                getName(),getPrice(),getAveScore(),getID(),(getStock() == 0) ? "out of stock" : "only %d left in stock",getStock(),
+        return String.format("\n%s\nPrice: %s\nScore: %s\nID: %s\n%s\n%s\n%s%s%s",
+                getName(),getPrice(),getAveScore(),getID(),(getStock() == 0) ? "out of stock" : "only"+ getStock() +"left in stock",
                 "Comments", "-----------------------------------------------------------------------------------------\n",
-                commentStrings.toString());
+                commentStrings.toString(),"\n");
     }
 
 

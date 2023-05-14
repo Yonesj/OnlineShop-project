@@ -17,7 +17,7 @@ public abstract class Electronic extends Commodity {
 
     @Override
     public String toString(){
-        return String.format("%s\n%s%-20s%f%-20s%s",super.toString() ,"Technical Details:\n",
+        return String.format("%s\n%s\n%-20s%f%-20s%s",super.toString() ,"Technical Details:",
                 "weight:" , getWeight() , "\nSize:" , getSize());
     }
 

@@ -63,12 +63,12 @@ public class CustomerControl {
                     CustomPanel customPanel = new CustomPanel(customer);
                     customPanel.customerPage();
                 }else {
-                    return  "password is wrong!";
+                    return  "password is wrong(press Enter)!";
                 }
             }
         }
 
-        return  "no account with this username has been fount! ";
+        return  "no account with this username has been found!(press Enter) ";
     }
 
     public static String editInfo(Customer customer,String newEmail,String newPhone,String newPass){

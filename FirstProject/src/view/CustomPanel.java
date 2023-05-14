@@ -44,7 +44,7 @@ public class CustomPanel {
     }
 
     private void viewInfo(){
-        System.out.println(customer.toString());
+        System.out.println("My personal info" + customer.toString());
         System.out.println("[1] back      [2] Edit");
         int input = scanner.nextInt();
 

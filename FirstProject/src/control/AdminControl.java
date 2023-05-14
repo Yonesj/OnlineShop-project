@@ -9,7 +9,7 @@ import model.commodity.*;
 import view.AdminPanel;
 
 public class AdminControl {
-    static int count = 0;
+    static int count = 1;
     private static Admin admin = Admin.getAdmin();
     public static String processCommand(String command){
         String[] subString = command.split("--");
@@ -181,7 +181,8 @@ public class AdminControl {
                     case "users":
                         StringBuilder viewUsers = new StringBuilder();
                         for (Customer customer: CustomerControl.getCustomers()) {
-                            viewUsers.append(customer.toString());
+                            viewUsers.append(customer.toString())
+                                    .append("\n");
                         }
                         return viewUsers.toString();
 
@@ -193,6 +194,7 @@ public class AdminControl {
                             count++;
                             viewRequests.append(request.toString());
                         }
+                        count = 1;
                         return viewRequests.toString();
 
                     default:
@@ -246,7 +248,7 @@ public class AdminControl {
                     }
 
                 }else {
-                    return  "out of bound error!";
+                    return  "index out of bound error!";
                 }
 
             case "help":
