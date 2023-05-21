@@ -5,6 +5,8 @@ import model.commodity.subclasses.*;
 import model.user.Admin;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class CommodityControl {
     private Admin admin;
@@ -91,6 +93,8 @@ public class CommodityControl {
                 Seed.add(commodity);
             }
         }
+
+        Collections.sort(getSeed());
     }
 
     //getters
@@ -148,6 +152,10 @@ public class CommodityControl {
         }else {
             return null;
         }
+    }
+
+    public ArrayList<Commodity> getSeed() {
+        return Seed;
     }
 
     //setters

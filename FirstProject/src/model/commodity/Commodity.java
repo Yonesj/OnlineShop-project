@@ -2,10 +2,11 @@ package model.commodity;
 
 import model.connectors.Comment;
 import model.connectors.Score;
+import model.user.Admin;
 
 import java.util.ArrayList;
 
-public abstract class Commodity {
+public abstract class Commodity implements Comparable{
     // instance variables
     private String ID;
     private String name;
@@ -15,6 +16,7 @@ public abstract class Commodity {
     private ArrayList<Comment> comments;
     private ArrayList<Score> scores;
     private Category category;
+    private static SortBy sortBy = SortBy.DEFAULT;
 
     //constructors
     public Commodity(String name,double price,int stock,Category category){
@@ -57,6 +59,82 @@ public abstract class Commodity {
                 commentStrings.toString());
     }
 
+    @Override
+    public int compareTo(Object object){
+        Commodity obj2 = (Commodity) object;
+
+        Admin admin = Admin.getAdmin();
+        int thisIndex = -1;
+        int obj2Index = -1;
+
+        for (int i = 0; i < admin.getCommoditylistLen() ; i++) {
+            if(admin.getCommodityList().get(i) == this){
+                thisIndex = i;
+            }
+            if(admin.getCommodityList().get(i) == obj2){
+                obj2Index = i;
+            }
+        }
+
+
+        if(getSortBy() == SortBy.AVAILABILITY){
+            if(this.getStock() > obj2.getStock()){
+                return 1;
+            }else if(this.getStock() < obj2.getStock()){
+                return -1;
+            }else {
+                return 0;
+            }
+        }
+        else if(getSortBy() == SortBy.SCORE){
+            if(this.getAveScore() > obj2.getAveScore()){
+                return 1;
+            }else if(this.getAveScore() < obj2.getAveScore()){
+                return -1;
+            }else {
+                return 0;
+            }
+        }
+        else if(getSortBy() == SortBy.EXPENSIVENESS){
+            if(this.getPrice() < obj2.getPrice()){
+                return 1;
+            }else if(this.getPrice() > obj2.getPrice()){
+                return -1;
+            }else {
+                return 0;
+            }
+        }
+        else if(getSortBy() == SortBy.CHEAPNESS){
+            if(this.getPrice() > obj2.getPrice()){
+                return 1;
+            }else if(this.getPrice() < obj2.getPrice()){
+                return -1;
+            }else {
+                return 0;
+            }
+        }else if(getSortBy() == SortBy.ALPHABET){
+            return this.getName().compareTo(obj2.getName());
+        }
+        else if(getSortBy() == SortBy.RECENT){
+            if(thisIndex > obj2Index){
+                return -1;
+            }else if(thisIndex < obj2Index){
+                return 1;
+            }else {
+                return 0;
+            }
+        }
+        else {
+            if(thisIndex < obj2Index){
+                return -1;
+            }else if(thisIndex > obj2Index){
+                return 1;
+            }else {
+                return 0;
+            }
+        }
+
+    }
 
     //add methods
     public void addComment(Comment comment){
@@ -101,6 +179,9 @@ public abstract class Commodity {
         return category;
     }
 
+    public SortBy getSortBy() {
+        return sortBy;
+    }
 
     //setters
     public void setName(String name) {
@@ -119,6 +200,10 @@ public abstract class Commodity {
             throw new IllegalArgumentException("stock can't be negative!");
         }
         this.stock = stock;
+    }
+
+    public void setSortBy(SortBy sortBy) {
+        this.sortBy = sortBy;
     }
 
     //calculate score
