@@ -317,6 +317,48 @@ public class AdminControl {
                         return "invalid arguman,use help";
                 }
 
+            case "MarkdownCommodity":
+                double percentage = Double.parseDouble(subString[1].trim());
+                String productID = subString[2];
+                boolean isProductFound = false;
+
+                for (Commodity commodity: admin.getCommodityList()){
+                    if(commodity.getID().equals(productID)){
+                        isProductFound = true;
+                        if(commodity instanceof Electronic || commodity instanceof Pen || commodity instanceof Pencil){
+                            ((DiscountInterface) commodity).addDiscount(percentage);
+                        }else {
+                            return "you can only markdown digital,pen and pencil products";
+                        }
+                        break;
+                    }
+                }
+
+                if(!isProductFound){
+                    return "no product with this id found";
+                }else {
+                    return "Discount added successfully";
+                }
+
+            case "RemoveMarkdown":
+                String productIDforRemove = subString[1];
+                boolean isProductFound2 = false;
+
+                for (Commodity commodity: admin.getCommodityList()){
+                    if(commodity.getID().equals(productIDforRemove)){
+                        isProductFound = true;
+                        if(commodity instanceof Electronic || commodity instanceof Pen || commodity instanceof Pencil){
+                            ((DiscountInterface) commodity).removeDiscount();
+                        }
+                        break;
+                    }
+                }
+                if(!isProductFound2){
+                    return "no product with this id found";
+                }else {
+                    return "Discount removed successfully";
+                }
+
             case "help":
                 return String.format("%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
                         "COMMAND","FUNCTION",
