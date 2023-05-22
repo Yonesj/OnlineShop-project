@@ -1,6 +1,9 @@
 package view;
 
 import control.*;
+import exceptions.InvalidEmailException;
+import exceptions.InvalidPasswordException;
+import exceptions.InvalidPhoneNumberException;
 import model.user.Customer;
 
 import java.util.Scanner;
@@ -45,7 +48,10 @@ public class MainPanel {
         String inputPass = scanner.nextLine();
 
         AdminControl.loggin(inputUsername,inputPass);
-        System.out.println(CustomerControl.loggin(inputUsername,inputPass));
+        try {
+            System.out.println(CustomerControl.loggin(inputUsername,inputPass));
+        }catch (InvalidPasswordException e){}
+
         loggin();
     }
 
@@ -60,7 +66,10 @@ public class MainPanel {
         System.out.printf("password:      ");
         String inputPass = scanner.nextLine();
 
-        System.out.println(CustomerControl.signIn(inputUsername,inputEmail,inpurPhone,inputPass));
+        try {
+            System.out.println(CustomerControl.signIn(inputUsername,inputEmail,inpurPhone,inputPass));
+        }catch (InvalidPhoneNumberException | InvalidEmailException | InvalidPasswordException e){}
+
         mainPage();
     }
 }

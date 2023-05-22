@@ -398,7 +398,6 @@ public class AdminControl {
 
     public static void loggin(String inputUsername,String inputPassword){
         if(inputUsername.equals("admin") && inputPassword.equals("admin")){
-            System.out.println("\nwelcome to Admin panel!");
             AdminPanel.adminPage();
         }
     }

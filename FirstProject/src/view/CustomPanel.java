@@ -1,6 +1,7 @@
 package view;
 import control.CommodityControl;
 import control.CustomerControl;
+import exceptions.*;
 import model.connectors.Invoice;
 import model.user.Customer;
 import model.commodity.Commodity;
@@ -64,8 +65,12 @@ public class CustomPanel {
         System.out.printf("password: %s\n>>",customer.getPassword());
         String newPass = scanner.nextLine();
 
-        System.out.println(CustomerControl.editInfo(customer,newEmail,newPhone,newPass));
-        customerPage();
+        try {
+            System.out.println(CustomerControl.editInfo(customer,newEmail,newPhone,newPass));
+        }catch (InvalidPhoneNumberException | InvalidEmailException | InvalidPasswordException e){}
+
+
+    customerPage();
     }
 
     private void viewCart(){
@@ -82,7 +87,10 @@ public class CustomPanel {
             case 2:
                 System.out.printf("Enter your Discount\n>>");
                 String dizzcode = scanner.nextLine();
-                System.out.println(CustomerControl.finalizePurchase(customer,dizzcode));
+                try {
+                    System.out.println(CustomerControl.finalizePurchase(customer,dizzcode));
+                }catch (InsufficientBalanceException | InsufficientStockException | InvalidDiscountCodeException e){}
+
                 customerPage();
                 break;
             case 3:

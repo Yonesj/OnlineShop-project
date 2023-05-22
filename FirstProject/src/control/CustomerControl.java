@@ -1,5 +1,6 @@
 package control;
 
+import exceptions.*;
 import model.commodity.Commodity;
 import model.connectors.Discount;
 import model.connectors.Invoice;
@@ -35,20 +36,21 @@ public class CustomerControl {
         return customers;
     }
 
-    public static String signIn(String username,String email,String phone ,String password){
+    public static String signIn(String username,String email,String phone ,String password)
+    throws InvalidEmailException, InvalidPhoneNumberException,InvalidPasswordException {
         for(Customer customer : customers){
             if(customer.getUsername().equals(username)){
                 return "This username has been taken!";
             }
         }
         if(!emailPattern.matcher(email).find()){
-            return "invalid email!";
+            throw new InvalidEmailException();
         }
         if(!phoneNumberPattern.matcher(phone).find()){
-            return "invalid phone number!";
+            throw new InvalidPhoneNumberException("phone number must start with 09 and have 11 character length at all");
         }
         if(!passPattern.matcher(password).find()){
-            return "password must have at least 8 character, one letter and one number!";
+            throw new InvalidPasswordException("password must have at least 8 character, one letter and one number!");
         }
 
 
@@ -58,14 +60,15 @@ public class CustomerControl {
         return "your request has been sent to admin";
     }
 
-    public static String loggin(String inputUsername,String inputPassword){
+    public static String loggin(String inputUsername,String inputPassword)
+    throws InvalidPasswordException{
         for (Customer customer: customers){
             if(customer.getUsername().equals(inputUsername)){
                 if(customer.getPassword().equals(inputPassword)){
                     CustomPanel customPanel = new CustomPanel(customer);
                     customPanel.customerPage();
                 }else {
-                    return  "password is wrong!";
+                    throw new InvalidPasswordException("password is wrong!");
                 }
             }
         }
@@ -73,27 +76,27 @@ public class CustomerControl {
         return  "no account with this username has been fount! ";
     }
 
-    public static String editInfo(Customer customer,String newEmail,String newPhone,String newPass){
+    public static String editInfo(Customer customer,String newEmail,String newPhone,String newPass)
+    throws InvalidPasswordException,InvalidEmailException,InvalidPhoneNumberException{
         boolean emailIsOkay = false;
         boolean passIsOkay = false;
         boolean phoneIsOkay = false;
 
         if(!newEmail.equals("")){
             if(!emailPattern.matcher(newEmail).find()){
-                return "invalid email!";
+                throw new InvalidEmailException();
             }
             emailIsOkay = true;
         }
         if(!newPhone.equals("")){
             if(!phoneNumberPattern.matcher(newPhone).find()){
-                return "invalid phone number!";
+                throw new InvalidPhoneNumberException("phone number must start with 09 and have 11 character length at all");
             }
             phoneIsOkay = true;
         }
         if(!newPass.equals("")){
             if(!passPattern.matcher(newPass).find()){
-                return "password must have at least 8 character, one letter and one number!";
-            }
+                throw new InvalidPasswordException("password must have at least 8 character, one letter and one number!");            }
             passIsOkay = true;
         }
 
@@ -130,7 +133,8 @@ public class CustomerControl {
         return "your request has been sent to admin";
     }
 
-    public static String finalizePurchase(Customer customer,String code){
+    public static String finalizePurchase(Customer customer,String code)
+            throws InsufficientBalanceException, InsufficientStockException, InvalidDiscountCodeException {
         Discount discount = null;
         boolean discountFound = false;
         for (Discount dis : customer.getDiscounts()){
@@ -141,16 +145,16 @@ public class CustomerControl {
             }
         }
         if(!discountFound){
-            return "discount is invalid";
+            throw new InvalidDiscountCodeException("discount is invalid") ;
         }
 
         LocalDate now = LocalDate.now();
         if(now.isAfter(discount.getExpireDate())){
-            return "this discount has been expired";
+            throw new InvalidDiscountCodeException("this discount has been expired");
         }
 
         if(discount.getCapacity() == 0){
-            return "this discount has been expired";
+            throw new InvalidDiscountCodeException("this discount has been expired");
         }
 
         double amount = 0;
@@ -164,14 +168,14 @@ public class CustomerControl {
                 }
             }
             if(count > customer.getCart().get(i).getStock()){
-                return "not enough stock!";
+                throw new InsufficientStockException("not enough stock!");
             }
         }
 
         amount -= amount * discount.getPercent() / 100;
 
         if(customer.getCredit() < amount){
-            return "not enough credit!";
+            throw new InsufficientBalanceException("not enough credit!");
         }
 
         customer.setCredit(customer.getCredit() - amount);
