@@ -80,7 +80,9 @@ public class CustomPanel {
                 customerPage();
                 break;
             case 2:
-                System.out.println(CustomerControl.finalizePurchase(customer));
+                System.out.printf("Enter your Discount\n>>");
+                String dizzcode = scanner.nextLine();
+                System.out.println(CustomerControl.finalizePurchase(customer,dizzcode));
                 customerPage();
                 break;
             case 3:

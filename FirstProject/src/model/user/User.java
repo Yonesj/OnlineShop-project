@@ -1,5 +1,8 @@
 package model.user;
 
+import model.connectors.Discount;
+
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +12,7 @@ public abstract class User {
     private String emailAddress;
     private String phoneNumber;
     private String password;
+    private ArrayList<Discount> discounts;
 
 
     // Constructors
@@ -17,12 +21,17 @@ public abstract class User {
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        discounts = new ArrayList<>();
     }
 
 
     //override method toString
     @Override
     public abstract String toString();
+
+    public void addDiscount(Discount discount){
+        discounts.add(discount);
+    }
 
     //getters
     public String getEmailAddress() {
@@ -39,6 +48,19 @@ public abstract class User {
 
     public String getUsername(){
         return username;
+    }
+
+
+    public ArrayList<Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public Discount getDiscount(int index){
+        if(discounts.get(index -1) != null) {
+            return discounts.get(index - 1);
+        }else {
+            return null;
+        }
     }
 
     //setters

@@ -1,12 +1,15 @@
 package control;
 
 import model.commodity.subclasses.*;
-import model.connectors.RequestType;
-import model.connectors.Status;
+import model.connectors.*;
 import model.user.*;
-import model.connectors.Request;
 import model.commodity.*;
 import view.AdminPanel;
+
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class AdminControl {
     static int count = 0;
@@ -195,6 +198,13 @@ public class AdminControl {
                         }
                         return viewRequests.toString();
 
+                    case "discounts":
+                        StringBuilder viewDiscounts = new StringBuilder();
+                        for (Discount discount: admin.getDiscounts()){
+                            viewDiscounts.append(discount.toString() + "\n");
+                        }
+                        return viewDiscounts.toString();
+
                     default:
                         return "invalid arguman [1],use help";
                 }
@@ -249,8 +259,66 @@ public class AdminControl {
                     return  "out of bound error!";
                 }
 
+            case "AddDiscount":
+                double percent = Double.parseDouble(subString[1].trim());
+                int capacity = Integer.parseInt(subString[2].trim());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                LocalDate date = LocalDate.parse(subString[3],formatter);
+
+                Discount discount = new Discount(percent,capacity,date);
+                admin.addDiscount(discount);
+                return "Discount added successfully";
+
+            case "GiftDiscount":
+                String code = subString[1].trim();
+
+                boolean isfound = false;
+                Discount discountHolder = null;
+                for (Discount dizz : admin.getDiscounts()){
+                    if(dizz.getCode().equals(code)){
+                        discountHolder = dizz;
+                        isfound = true;
+                        break;
+                    }
+                }
+                if(!isfound){
+                    return "no discount with this code found";
+                }
+
+                switch (subString[2].trim()){
+                    case "firstPurchase":
+                        for (Customer customer : CustomerControl.getCustomers()){
+                            if(customer.getShoppinHistory().size() == 1){
+                                customer.addDiscount(discountHolder);
+                            }
+                        }
+                        return "Discount added successfully";
+
+                    case "loyalCustomers":
+                        for (Customer customer : CustomerControl.getCustomers()){
+                            if(customer.getShoppinHistory().size() > 5){
+                                customer.addDiscount(discountHolder);
+                            }
+                        }
+                        return "Discount added successfully";
+
+                    case "bestCustomers":
+                        for (Customer customer : CustomerControl.getCustomers()){
+                            for (Invoice invoice : customer.getShoppinHistory()){
+                                if(invoice.getAmount() > 2000){
+                                    customer.addDiscount(discountHolder);
+                                    break;
+                                }
+                            }
+                        }
+                        return "Discount added successfully";
+
+                    default:
+                        return "invalid arguman,use help";
+                }
+
             case "help":
-                return String.format("%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
+                return String.format("%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n%-20s%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
                         "COMMAND","FUNCTION",
                         "Add","Add a product to the shop.",
                         "Edit","Edit information of a product.",
@@ -260,12 +328,14 @@ public class AdminControl {
                         "ManageRequest","Mange user s requests.",
                         "Remove","Remove a product from the shop.",
                         "View","Display information of users or requests.",
+                        "AddDiscount","Add a product to the shop.",
                         "How to use:",
                         "Add             [department] [name] [price] [stock] [special argumans]",
                         "Edit            [id] [new name] [new price] [new stock] (put 0 for those you dont want to chang)",
                         "Remove          [id]",
                         "View            [users / requests]",
-                        "MangeRequest    [index] [accept / reject]");
+                        "MangeRequest    [index] [accept / reject]",
+                        "AddDiscount     [percent] [capacity] [expiration date]");
 
             case "Help":
                 return String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",

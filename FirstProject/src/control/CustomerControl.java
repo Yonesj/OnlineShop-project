@@ -1,12 +1,14 @@
 package control;
 
 import model.commodity.Commodity;
+import model.connectors.Discount;
 import model.connectors.Invoice;
 import model.connectors.Request;
 import model.user.Admin;
 import model.user.Customer;
 import view.CustomPanel;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -128,7 +130,29 @@ public class CustomerControl {
         return "your request has been sent to admin";
     }
 
-    public static String finalizePurchase(Customer customer){
+    public static String finalizePurchase(Customer customer,String code){
+        Discount discount = null;
+        boolean discountFound = false;
+        for (Discount dis : customer.getDiscounts()){
+            if(dis.getCode().equals(code)){
+                discountFound = true;
+                discount = dis;
+                break;
+            }
+        }
+        if(!discountFound){
+            return "discount is invalid";
+        }
+
+        LocalDate now = LocalDate.now();
+        if(now.isAfter(discount.getExpireDate())){
+            return "this discount has been expired";
+        }
+
+        if(discount.getCapacity() == 0){
+            return "this discount has been expired";
+        }
+
         double amount = 0;
 
         for (int i=0; i < customer.getCart().size(); i++){
@@ -143,6 +167,8 @@ public class CustomerControl {
                 return "not enough stock!";
             }
         }
+
+        amount -= amount * discount.getPercent() / 100;
 
         if(customer.getCredit() < amount){
             return "not enough credit!";
