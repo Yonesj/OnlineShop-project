@@ -1,0 +1,5 @@
+package model.commodity;
+
+public enum SortBy {
+    DEFAULT,RECENT,EXPENSIVENESS,CHEAPNESS,ALPHABET,AVAILABILITY,SCORE
+}
