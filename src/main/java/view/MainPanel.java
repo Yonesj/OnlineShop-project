@@ -65,10 +65,10 @@ public class MainPanel {
         String inpurPhone = scanner.nextLine();
         System.out.printf("password:      ");
         String inputPass = scanner.nextLine();
-
-        try {
-            System.out.println(CustomerControl.signIn(inputUsername,inputEmail,inpurPhone,inputPass));
-        }catch (InvalidPhoneNumberException | InvalidEmailException | InvalidPasswordException e){}
+//
+//        try {
+//            System.out.println(CustomerControl.signIn(inputUsername,inputEmail,inpurPhone,inputPass));
+//        }catch (InvalidPhoneNumberException | InvalidEmailException | InvalidPasswordException e){}
 
         mainPage();
     }

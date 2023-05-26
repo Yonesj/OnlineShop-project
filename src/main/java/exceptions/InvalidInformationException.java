@@ -5,6 +5,6 @@ public class InvalidInformationException extends Exception{
         super("InvalidInformationException");
     }
     public InvalidInformationException(String errorMassage){
-        super("InvalidInformationException --> " + errorMassage);
+        super(errorMassage);
     }
 }

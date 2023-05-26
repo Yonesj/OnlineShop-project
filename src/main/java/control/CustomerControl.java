@@ -18,12 +18,6 @@ public class CustomerControl {
     private static Admin admin = Admin.getAdmin();
     private static ArrayList<Customer> customers = new ArrayList<>();;
 
-    // pattens for validate input
-    private static Pattern emailPattern = Pattern.compile("\\w+@(gmail|yahoo)\\.com");
-    private static Pattern phoneNumberPattern = Pattern.compile("09\\d{9}");
-    private static Pattern passPattern = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
-    private static Matcher matcher;
-
     public CustomerControl(){
 
     }
@@ -36,28 +30,28 @@ public class CustomerControl {
         return customers;
     }
 
-    public static String signIn(String username,String email,String phone ,String password)
-    throws InvalidEmailException, InvalidPhoneNumberException,InvalidPasswordException {
-        for(Customer customer : customers){
-            if(customer.getUsername().equals(username)){
-                return "This username has been taken!";
-            }
+    public static void signIn(String username,String email,String phone ,String password)
+    throws InvalidEmailException, InvalidPhoneNumberException,InvalidPasswordException,NotAvailableUsernameException {
+
+        if(!NotAvailableUsernameException.isUsernameAvailable(username)){
+            throw new NotAvailableUsernameException("this username is not available");
         }
-        if(!emailPattern.matcher(email).find()){
-            throw new InvalidEmailException();
+        if(!InvalidEmailException.isEmailValid(email)){
+            throw new InvalidEmailException("email is not valid");
         }
-        if(!phoneNumberPattern.matcher(phone).find()){
+        if(!InvalidPhoneNumberException.isPhoneValid(phone)){
             throw new InvalidPhoneNumberException("phone number must start with 09 and have 11 character length at all");
         }
-        if(!passPattern.matcher(password).find()){
+        if(!InvalidPasswordException.isPassValid(password)){
             throw new InvalidPasswordException("password must have at least 8 character, one letter and one number!");
         }
 
 
         Customer customer = new Customer(username,email,phone,password);
-        Request request = new Request(customer);
-        admin.addRequest(request);
-        return "your request has been sent to admin";
+//        Request request = new Request(customer);
+//        admin.addRequest(request);
+        customers.add(customer);
+//        return "your request has been sent to admin";
     }
 
     public static String loggin(String inputUsername,String inputPassword)
@@ -83,19 +77,19 @@ public class CustomerControl {
         boolean phoneIsOkay = false;
 
         if(!newEmail.equals("")){
-            if(!emailPattern.matcher(newEmail).find()){
+            if(!InvalidEmailException.isEmailValid(newEmail)){
                 throw new InvalidEmailException();
             }
             emailIsOkay = true;
         }
         if(!newPhone.equals("")){
-            if(!phoneNumberPattern.matcher(newPhone).find()){
+            if(!InvalidPhoneNumberException.isPhoneValid(newPhone)){
                 throw new InvalidPhoneNumberException("phone number must start with 09 and have 11 character length at all");
             }
             phoneIsOkay = true;
         }
         if(!newPass.equals("")){
-            if(!passPattern.matcher(newPass).find()){
+            if(!InvalidPasswordException.isPassValid(newPass)){
                 throw new InvalidPasswordException("password must have at least 8 character, one letter and one number!");            }
             passIsOkay = true;
         }
