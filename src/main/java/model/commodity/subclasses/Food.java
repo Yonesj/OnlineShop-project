@@ -1,5 +1,6 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
 import model.commodity.Category;
 import model.commodity.Commodity;
 
@@ -9,8 +10,8 @@ public class Food extends Commodity {
     private final String expirationDate;
 
     //constructor
-    public Food(String name, double price, int stock, String manufactureDate, String expirationDate){
-        super(name,price,stock,Category.FOOD);
+    public Food(String name, double price, int stock, Image image, String manufactureDate, String expirationDate){
+        super(name,price,stock,Category.FOOD,image);
         this.manufactureDate = manufactureDate;
         this.expirationDate = expirationDate;
     }

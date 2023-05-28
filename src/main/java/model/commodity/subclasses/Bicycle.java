@@ -1,10 +1,12 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
+
 public class Bicycle extends Vehicle {
     private BicycleType bicycleType;
 
-    public Bicycle(String name, double price, int stock, String company,BicycleType bicycleType){
-        super(name,price,stock,company);
+    public Bicycle(String name, double price, int stock, Image image, String company, BicycleType bicycleType){
+        super(name,price,stock,image,company);
         this.bicycleType = bicycleType;
     }
 

@@ -1,5 +1,6 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
 import model.commodity.Category;
 import model.commodity.Commodity;
 import model.connectors.DiscountInterface;
@@ -11,8 +12,8 @@ public abstract class Electronic extends Commodity implements DiscountInterface 
     private double percent;
 
     //constructors
-    public Electronic(String name,double price,int stock,double weight,String size){
-        super(name,price,stock, Category.ELECTRONIC);
+    public Electronic(String name,double price,int stock,Image image,double weight,String size){
+        super(name,price,stock, Category.ELECTRONIC,image);
         this.weight = weight;
         this.size = size;
     }

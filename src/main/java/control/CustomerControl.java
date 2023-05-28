@@ -54,20 +54,21 @@ public class CustomerControl {
 //        return "your request has been sent to admin";
     }
 
-    public static String loggin(String inputUsername,String inputPassword)
-    throws InvalidPasswordException{
+    public static Customer loggin(String inputUsername,String inputPassword)
+            throws InvalidPasswordException, NotFound404Exception {
         for (Customer customer: customers){
             if(customer.getUsername().equals(inputUsername)){
                 if(customer.getPassword().equals(inputPassword)){
-                    CustomPanel customPanel = new CustomPanel(customer);
-                    customPanel.customerPage();
+                    return customer;
+//                    CustomPanel customPanel = new CustomPanel(customer);
+//                    customPanel.customerPage();
                 }else {
                     throw new InvalidPasswordException("password is wrong!");
                 }
             }
         }
 
-        return  "no account with this username has been fount! ";
+        throw new NotFound404Exception("no account with this username has been fount! ");
     }
 
     public static String editInfo(Customer customer,String newEmail,String newPhone,String newPass)

@@ -48,9 +48,9 @@ public class MainPanel {
         String inputPass = scanner.nextLine();
 
         AdminControl.loggin(inputUsername,inputPass);
-        try {
-            System.out.println(CustomerControl.loggin(inputUsername,inputPass));
-        }catch (InvalidPasswordException e){}
+//        try {
+//            System.out.println(CustomerControl.loggin(inputUsername,inputPass));
+//        }catch (InvalidPasswordException e){}
 
         loggin();
     }

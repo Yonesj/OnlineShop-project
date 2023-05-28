@@ -1,11 +1,13 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
+
 public class NoteBook extends Stationery{
     private int sheets;
     private String paperType;
 
-    public NoteBook(String name,double price,int stock,String madeIN,int sheets,String paperType){
-        super(name,price,stock,madeIN);
+    public NoteBook(String name, double price, int stock, Image image, String madeIN, int sheets, String paperType){
+        super(name,price,stock,image,madeIN);
         this.sheets = sheets;
         this.paperType = paperType;
     }

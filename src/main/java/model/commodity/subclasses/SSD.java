@@ -1,12 +1,14 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
+
 public class SSD extends DataStorage {
     //instance variables
     private double readingSpeed;
     private double writingSpeed;
     //constructor
-    public SSD(String name,double price,int stock,double weight,String size,String capacity,double readingSpeed,double writingSpeed){
-        super(name,price,stock,weight,size,capacity);
+    public SSD(String name, double price, int stock, Image image, double weight, String size, String capacity, double readingSpeed, double writingSpeed){
+        super(name,price,stock,image,weight,size,capacity);
         this.readingSpeed = readingSpeed;
         this.writingSpeed = writingSpeed;
     }

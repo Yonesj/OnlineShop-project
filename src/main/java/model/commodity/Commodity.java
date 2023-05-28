@@ -1,5 +1,6 @@
 package model.commodity;
 
+import javafx.scene.image.Image;
 import model.connectors.Comment;
 import model.connectors.Score;
 import model.user.Admin;
@@ -16,10 +17,11 @@ public abstract class Commodity implements Comparable{
     private ArrayList<Comment> comments;
     private ArrayList<Score> scores;
     private Category category;
+    private Image image;
     private static SortBy sortBy = SortBy.DEFAULT;
 
     //constructors
-    public Commodity(String name,double price,int stock,Category category){
+    public Commodity(String name,double price,int stock,Category category,Image image){
         if(price <= 0){
             throw new IllegalArgumentException("price can't be negative!");
         }
@@ -31,6 +33,7 @@ public abstract class Commodity implements Comparable{
         this.price = price;
         this.stock = stock;
         this.category = category;
+        this.image = image;
         comments = new ArrayList<>();
         scores = new ArrayList<>();
         this.ID = idBuilder();

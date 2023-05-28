@@ -1,5 +1,6 @@
 package control;
 
+import javafx.scene.image.Image;
 import model.commodity.Commodity;
 import model.commodity.subclasses.*;
 import model.connectors.*;
@@ -21,20 +22,21 @@ public class AdminControl {
                 String name = subString[2];
                 double price = Double.parseDouble(subString[3].trim());
                 int stock = Integer.parseInt(subString[4].trim());
+                Image image = new Image(subString[5]);
 
                 switch (subString[1].trim()){
                     case "car":
-                        String company = subString[5];
-                        double engineVolume = Double.parseDouble(subString[6].trim());
-                        boolean isAuto = Boolean.parseBoolean(subString[7]);
-                        Car car = new Car(name,price,stock,company,engineVolume,isAuto);
+                        String company = subString[6];
+                        double engineVolume = Double.parseDouble(subString[7].trim());
+                        boolean isAuto = Boolean.parseBoolean(subString[8]);
+                        Car car = new Car(name,price,stock,image,company,engineVolume,isAuto);
                         admin.addCommodity(car);
                         return "task completed successfully";
 
                     case "bicycle":
-                        String companyB = subString[5];
+                        String companyB = subString[6];
                         BicycleType bicycleType;
-                        switch (subString[6].trim()){
+                        switch (subString[7].trim()){
                             case "hybryd":
                                 bicycleType = BicycleType.HYBRYD;
                                 break;
@@ -50,57 +52,57 @@ public class AdminControl {
                             default:
                                 return "invalid arguman [6],use Help";
                         }
-                        Bicycle bicycle = new Bicycle(name,price,stock,companyB,bicycleType);
+                        Bicycle bicycle = new Bicycle(name,price,stock,image,companyB,bicycleType);
                         admin.addCommodity(bicycle);
                         return "task completed successfully";
 
                     case "pc":
-                        double pcWeight = Double.parseDouble(subString[5].trim());
-                        String pcSize = subString[6];
-                        String cpuModel = subString[7];
-                        int ramMemory = Integer.parseInt(subString[8].trim());
-                        PersonalComputer pc = new PersonalComputer(name,price,stock,pcWeight,pcSize,cpuModel,ramMemory);
+                        double pcWeight = Double.parseDouble(subString[6].trim());
+                        String pcSize = subString[7];
+                        String cpuModel = subString[8];
+                        int ramMemory = Integer.parseInt(subString[9].trim());
+                        PersonalComputer pc = new PersonalComputer(name,price,stock,image,pcWeight,pcSize,cpuModel,ramMemory);
                         admin.addCommodity(pc);
                         return "task completed successfully";
 
                     case "usb":
-                        double usbWeight = Double.parseDouble(subString[5].trim());
-                        String usbSize = subString[6];
-                        String usbCapacity = subString[7];
-                        String usbVersion = subString[8];
-                        USB usb = new USB(name,price,stock,usbWeight,usbSize,usbCapacity,usbVersion);
+                        double usbWeight = Double.parseDouble(subString[6].trim());
+                        String usbSize = subString[7];
+                        String usbCapacity = subString[8];
+                        String usbVersion = subString[9];
+                        USB usb = new USB(name,price,stock,image,usbWeight,usbSize,usbCapacity,usbVersion);
                         admin.addCommodity(usb);
                         return "task completed successfully";
 
                     case "ssd":
-                        double ssdWeight = Double.parseDouble(subString[5].trim());
-                        String ssdSize = subString[6];
-                        String ssdCapacity = subString[7];
-                        double readingSpeed = Double.parseDouble(subString[8].trim());
-                        double writingSpeed = Double.parseDouble(subString[9].trim());
-                        SSD ssd = new SSD(name,price,stock,ssdWeight,ssdSize,ssdCapacity,readingSpeed,writingSpeed);
+                        double ssdWeight = Double.parseDouble(subString[6].trim());
+                        String ssdSize = subString[7];
+                        String ssdCapacity = subString[8];
+                        double readingSpeed = Double.parseDouble(subString[9].trim());
+                        double writingSpeed = Double.parseDouble(subString[10].trim());
+                        SSD ssd = new SSD(name,price,stock,image,ssdWeight,ssdSize,ssdCapacity,readingSpeed,writingSpeed);
                         admin.addCommodity(ssd);
                         return "task completed successfully";
 
                     case "notebook":
-                        String madeIN1 = subString[5];
-                        int sheets = Integer.parseInt(subString[6].trim());
-                        String paperType = subString[7];
-                        NoteBook noteBook = new NoteBook(name,price,stock,madeIN1,sheets,paperType);
+                        String madeIN1 = subString[6];
+                        int sheets = Integer.parseInt(subString[7].trim());
+                        String paperType = subString[8];
+                        NoteBook noteBook = new NoteBook(name,price,stock,image,madeIN1,sheets,paperType);
                         admin.addCommodity(noteBook);
                         return "task completed successfully";
 
                     case "pen":
-                        String madeIN2 = subString[5];
-                        String color = subString[6];
-                        Pen pen = new Pen(name,price,stock,madeIN2,color);
+                        String madeIN2 = subString[6];
+                        String color = subString[7];
+                        Pen pen = new Pen(name,price,stock,image,madeIN2,color);
                         admin.addCommodity(pen);
                         return "task completed successfully";
 
                     case "pencil":
-                        String madeIN3 = subString[5];
+                        String madeIN3 = subString[6];
                         PencilType pencilType;
-                        switch (subString[6].trim()){
+                        switch (subString[7].trim()){
                             case "HB":
                                 pencilType = PencilType.HB;
                                 break;
@@ -119,14 +121,14 @@ public class AdminControl {
                             default:
                                 return "invalid arguman [6] , use Help";
                         }
-                        Pencil pencil = new Pencil(name,price,stock,madeIN3,pencilType);
+                        Pencil pencil = new Pencil(name,price,stock,image,madeIN3,pencilType);
                         admin.addCommodity(pencil);
                         return "task completed successfully";
 
                     case "food":
-                        String manufactureDate = subString[5];
-                        String expirationDate = subString[6];
-                        Food food = new Food(name,price,stock,manufactureDate,expirationDate);
+                        String manufactureDate = subString[6];
+                        String expirationDate = subString[7];
+                        Food food = new Food(name,price,stock,image,manufactureDate,expirationDate);
                         admin.addCommodity(food);
                         return "task completed successfully";
 
@@ -221,20 +223,25 @@ public class AdminControl {
                 }
 
                 if(index >= 1 && index <= admin.getRequestLen()){
-                    Request request;
-                    if(admin.getRequest(index) != null) {
-                        request = admin.getRequest(index);
+                    Request request = null;
+                    if(admin.getRequests() != null) {
+                        for(Request req : admin.getRequests()){
+                            if(req.getIndex() == index){
+                                request = req;
+                            }
+                        }
                     }else {
                         return "null pointer!";
                     }
 
-                    if(request.getRequestType() == RequestType.SIGNIN){
-                        if(isAccepted) {
-                            CustomerControl.addCustomer(request.getCustomer());
-                        }
-                        admin.removeReq(index);
-                        return "";
-                    }else if(request.getRequestType() == RequestType.COMMENT){
+//                    if(request.getRequestType() == RequestType.SIGNIN){
+//                        if(isAccepted) {
+//                            CustomerControl.addCustomer(request.getCustomer());
+//                        }
+//                        admin.removeReq(index);
+//                        return "";
+//                    }
+                    if(request.getRequestType() == RequestType.COMMENT){
                         if(isAccepted){
                             request.getComment().setStatus(Status.ACCEPTED);
                             Commodity hold = request.getCommodity();
@@ -395,10 +402,11 @@ public class AdminControl {
         }
     }
 
-    public static void loggin(String inputUsername,String inputPassword){
+    public static boolean loggin(String inputUsername,String inputPassword){
         if(inputUsername.equals("admin") && inputPassword.equals("admin")){
-            AdminPanel.adminPage();
+            return true;
         }
+        return false;
     }
 
 }

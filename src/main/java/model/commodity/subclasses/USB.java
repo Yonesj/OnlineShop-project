@@ -1,11 +1,13 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
+
 public class USB extends DataStorage {
     //instance variables
     private String usbVersion;
     //constructor
-    public USB(String name,double price,int stock,double weight,String size,String capacity,String usbVersion){
-        super(name,price,stock,weight,size,capacity);
+    public USB(String name, double price, int stock, Image image, double weight, String size, String capacity, String usbVersion){
+        super(name,price,stock,image,weight,size,capacity);
         this.usbVersion = usbVersion;
     }
 

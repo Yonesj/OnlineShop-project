@@ -1,13 +1,14 @@
 package model.commodity.subclasses;
 
+import javafx.scene.image.Image;
 import model.commodity.Category;
 import model.commodity.Commodity;
 
 public abstract class Vehicle extends Commodity {
     private String company;
 
-    public Vehicle(String name, double price, int stock, String company){
-        super(name,price,stock,Category.VEHICLE);
+    public Vehicle(String name, double price, int stock, Image image, String company){
+        super(name,price,stock,Category.VEHICLE,image);
         this.company = company;
     }
 

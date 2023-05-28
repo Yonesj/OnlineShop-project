@@ -56,25 +56,16 @@ public class SignUpPanelController {
 
 
     @FXML
-    void usernameInputTextField(InputMethodEvent event) {
-
-    }
-
+    void usernameInputTextField(InputMethodEvent event) {}
 
     @FXML
-    void emailTextField(KeyEvent event) {
-
-    }
+    void emailTextField(KeyEvent event) {}
 
     @FXML
-    void phoneTextField(KeyEvent event) {
-
-    }
+    void phoneTextField(KeyEvent event) {}
 
     @FXML
-    void passwordTextfield(KeyEvent event) {
-
-    }
+    void passwordTextfield(KeyEvent event) {}
 
     @FXML
     void inputSigningInfo_btn(MouseEvent event) {
@@ -100,6 +91,7 @@ public class SignUpPanelController {
                 CustomerControl.signIn(username,email,phone,password);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("operation was successful");
+                alert.show();
                 Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();
                 stage.hide();
