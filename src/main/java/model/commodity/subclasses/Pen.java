@@ -30,4 +30,8 @@ public class Pen extends Stationery implements DiscountInterface {
     public String getColor() {
         return color;
     }
+
+    public double getPercent(){
+        return percent;
+    }
 }

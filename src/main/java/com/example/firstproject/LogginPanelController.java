@@ -22,23 +22,7 @@ import java.util.Objects;
 public class LogginPanelController {
     private String username;
     private String password;
-
-    public Stage showCustomerPanel(Customer customer) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("customer-panel.fxml"));
-
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("admin page");
-
-        CustomerPanelController controller = new CustomerPanelController();
-        controller.initData(customer);
-        loader.setController(controller);
-
-
-        return stage;
-    }
+    private Customer customer;
 
 
     @FXML
@@ -81,16 +65,17 @@ public class LogginPanelController {
                 stage.show();
             }else {
                 try {
-                    Customer customer = CustomerControl.loggin(username,password);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("customer-panel.fxml"));
-                    Parent root = loader.load();
-                    CustomerPanelController controller = loader.getController();
-                    controller.initData(customer);
-                    Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.setTitle("admin page");
-                    stage.show();
+                    customer = CustomerControl.loggin(username,password);
+                    FirstPanelController.customer = customer;
+//                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("custom-panel.fxml")));
+//                    Scene scene = new Scene(root);
+//                    Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+//                    stage.setScene(scene);
+//                    stage.setTitle("customer page");
+//                    stage.show();
+                    Node source = (Node) event.getSource();
+                    Stage stage = (Stage) source.getScene().getWindow();
+                    stage.hide();
 
                 }catch (NotFound404Exception | InvalidPasswordException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -110,5 +95,9 @@ public class LogginPanelController {
         stage.setScene(scene);
         stage.setTitle("Sign up page");
         stage.show();
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 }

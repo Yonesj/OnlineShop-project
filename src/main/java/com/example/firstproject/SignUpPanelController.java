@@ -89,13 +89,21 @@ public class SignUpPanelController {
         }else {
             try {
                 CustomerControl.signIn(username,email,phone,password);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("operation was successful");
                 alert.show();
                 Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();
                 stage.hide();
-            }catch (InvalidPhoneNumberException | InvalidEmailException | InvalidPasswordException | NotAvailableUsernameException e){
+
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loggin-panel.fxml")));
+                Scene scene = new Scene(root);
+                Stage previousStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+                previousStage.setScene(scene);
+                previousStage.setTitle("Sign in page");
+                previousStage.show();
+            }catch (InvalidPhoneNumberException | InvalidEmailException | InvalidPasswordException |
+                    NotAvailableUsernameException | IOException e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText(e.getMessage());
                 alert.show();

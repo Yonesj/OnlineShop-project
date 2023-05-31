@@ -27,7 +27,7 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="737.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="search_img" fitHeight="37.0" fitWidth="39.0" layoutX="737.0" layoutY="27.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../pics/icon-magnifier.png" />
          </image>

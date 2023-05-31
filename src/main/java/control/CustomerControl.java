@@ -56,12 +56,11 @@ public class CustomerControl {
 
     public static Customer loggin(String inputUsername,String inputPassword)
             throws InvalidPasswordException, NotFound404Exception {
-        for (Customer customer: customers){
+        for (int i=0; i < CustomerControl.getCustomers().size(); i++){
+            Customer customer = CustomerControl.customers.get(i);
             if(customer.getUsername().equals(inputUsername)){
                 if(customer.getPassword().equals(inputPassword)){
                     return customer;
-//                    CustomPanel customPanel = new CustomPanel(customer);
-//                    customPanel.customerPage();
                 }else {
                     throw new InvalidPasswordException("password is wrong!");
                 }

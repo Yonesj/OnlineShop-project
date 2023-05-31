@@ -30,4 +30,8 @@ public class Pencil extends Stationery implements DiscountInterface {
     public PencilType getPencilType() {
         return pencilType;
     }
+
+    public double getPercent() {
+        return percent;
+    }
 }

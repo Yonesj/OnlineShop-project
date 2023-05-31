@@ -186,6 +186,10 @@ public abstract class Commodity implements Comparable{
         return sortBy;
     }
 
+    public Image getImage() {
+        return image;
+    }
+
     //setters
     public void setName(String name) {
         this.name = name;

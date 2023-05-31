@@ -42,4 +42,8 @@ public abstract class Electronic extends Commodity implements DiscountInterface 
     public String getSize() {
         return size;
     }
+
+    public double getPercent() {
+        return percent;
+    }
 }
