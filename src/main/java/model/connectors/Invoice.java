@@ -2,18 +2,19 @@ package model.connectors;
 
 import model.commodity.Commodity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Invoice {
     private ArrayList<Commodity> commodities;
-    private final String date;
+    private final LocalDate date;
     private final double amount;
     private final String ID;
 
-    public Invoice(double amount,String date){
+    public Invoice(double amount,LocalDate date){
         this.amount = amount;
         this.date = date;
-        ID = date + (int)amount;
+        ID = date.toString() + (int)amount;
         commodities = new ArrayList<>();
     }
 
@@ -22,7 +23,7 @@ public class Invoice {
         return commodities;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

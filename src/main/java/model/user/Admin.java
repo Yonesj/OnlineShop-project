@@ -34,7 +34,13 @@ public class Admin extends User {
 
     //remove methods
     public void removeReq(int index){
-        requests.remove(index - 1);
+        if(requests != null) {
+            for (Request request : requests) {
+                if (request.getIndex() == index) {
+                    requests.remove(request);
+                }
+            }
+        }
     }
 
     public void removeCom(Commodity commodity){

@@ -1,11 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.CustomerPanelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="640.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.CustomerPanelController">
    <children>
-      <Label fx:id="customerNameLabel" layoutX="111.0" layoutY="98.0" prefHeight="66.0" prefWidth="67.0" text="Label" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="344.0" layoutX="41.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="321.0" />
+      <Label layoutX="110.0" layoutY="18.0" text="welcome" textFill="#ed1b37">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="username" layoutX="282.0" layoutY="18.0" prefHeight="54.0" prefWidth="193.0" text="username" textFill="#ed1b37">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="431.0" layoutY="424.0" mnemonicParsing="false" onMouseClicked="#logout_btn" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Log out" textFill="WHITE" />
+      <Button layoutX="431.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#changePass_btn" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Changing Password" textFill="WHITE" />
+      <Button layoutX="431.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#increaseCredot_btn" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Increase Credit" textFill="WHITE" />
+      <Button layoutX="431.0" layoutY="284.0" mnemonicParsing="false" onMouseClicked="#shoppingHistory_btn" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Shopping History" textFill="WHITE" />
+      <Button layoutX="431.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#cart_btn" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Cart" textFill="WHITE" />
+      <Label layoutX="59.0" layoutY="224.0" prefHeight="38.0" prefWidth="102.0" text="user name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="287.0" prefHeight="38.0" prefWidth="102.0" text="Email Address">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="349.0" prefHeight="38.0" prefWidth="102.0" text="Phone Number">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="408.0" prefHeight="38.0" prefWidth="102.0" text="Credit">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="142.0" prefHeight="43.0" prefWidth="194.0" text="Personal Info">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="38.0" fitWidth="35.0" layoutX="303.0" layoutY="146.0" onMouseClicked="#editInfo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/edit.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="usernameInBox" alignment="CENTER" layoutX="202.0" layoutY="224.0" prefHeight="38.0" prefWidth="122.0" text="username">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailLabel" alignment="CENTER" layoutX="202.0" layoutY="287.0" prefHeight="38.0" prefWidth="122.0" text="username">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="phoneLabel" alignment="CENTER" layoutX="202.0" layoutY="349.0" prefHeight="38.0" prefWidth="122.0" text="username">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="creditLabel" alignment="CENTER" layoutX="202.0" layoutY="408.0" prefHeight="38.0" prefWidth="122.0" text="username">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailField" layoutX="201.0" layoutY="287.0" prefHeight="38.0" prefWidth="122.0" visible="false" />
+      <TextField fx:id="phoneField" layoutX="201.0" layoutY="349.0" prefHeight="38.0" prefWidth="122.0" visible="false" />
+      <ImageView fx:id="back_img" fitHeight="38.0" fitWidth="36.0" layoutX="40.0" layoutY="27.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/left-arrow.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

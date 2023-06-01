@@ -19,9 +19,8 @@ public class Comment {
 
     @Override
     public String toString(){
-        return String.format("%s:      %s\n%s\n%s",
-                customer.getUsername(),text,(isBuyed) ? "user has buyed this product" : "user hasn't buyed this product",
-                "-----------------------------------------------------------------------------------------\n");
+        return String.format("%s\n%s"
+               ,text,(isBuyed) ? "user has buyed this product" : "user hasn't buyed this product");
     }
 
     //getters

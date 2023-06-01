@@ -112,7 +112,7 @@ public class CustomPanel {
         System.out.printf("Amount:        ");
         double amount = scanner.nextDouble();
 
-        System.out.println(CustomerControl.increaseCreditReq(customer,creditCard,password,cvv2,amount));
+        //System.out.println(CustomerControl.increaseCreditReq(customer,creditCard,cvv2,amount));
         customerPage();
     }
 

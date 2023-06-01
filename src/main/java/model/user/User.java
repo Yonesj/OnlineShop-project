@@ -1,5 +1,8 @@
 package model.user;
 
+import exceptions.InvalidEmailException;
+import exceptions.InvalidPasswordException;
+import exceptions.InvalidPhoneNumberException;
 import model.connectors.Discount;
 
 import java.util.ArrayList;
@@ -63,15 +66,24 @@ public abstract class User {
 
     //setters
 
-    public void setEmailAddress(String emailAddress) {
+    public void setEmailAddress(String emailAddress) throws InvalidEmailException {
+        if(!InvalidEmailException.isEmailValid(emailAddress)){
+            throw new InvalidEmailException("email is not valid");
+        }
         this.emailAddress = emailAddress;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) throws InvalidPhoneNumberException {
+        if(!InvalidPhoneNumberException.isPhoneValid(phoneNumber)){
+            throw new InvalidPhoneNumberException("phone number must start with 09 and have 11 character length at all");
+        }
         this.phoneNumber = phoneNumber;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws InvalidPasswordException {
+        if(!InvalidPasswordException.isPassValid(password)){
+            throw new InvalidPasswordException("password must have at least 8 character, one letter and one number!");
+        }
         this.password = password;
     }
 }

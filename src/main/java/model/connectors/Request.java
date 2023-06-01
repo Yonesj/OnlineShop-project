@@ -30,6 +30,7 @@ public class Request {
         this.customer = customer;
         this.amount = amount;
         requestType = RequestType.INCRESECREDIT;
+        index = count++;
     }
 
     //override method toString

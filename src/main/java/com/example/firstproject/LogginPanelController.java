@@ -67,12 +67,6 @@ public class LogginPanelController {
                 try {
                     customer = CustomerControl.loggin(username,password);
                     FirstPanelController.customer = customer;
-//                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("custom-panel.fxml")));
-//                    Scene scene = new Scene(root);
-//                    Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-//                    stage.setScene(scene);
-//                    stage.setTitle("customer page");
-//                    stage.show();
                     Node source = (Node) event.getSource();
                     Stage stage = (Stage) source.getScene().getWindow();
                     stage.hide();

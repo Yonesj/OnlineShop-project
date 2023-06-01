@@ -222,7 +222,7 @@ public class AdminControl {
                     return "invalid arguman [2] ,use help";
                 }
 
-                if(index >= 1 && index <= admin.getRequestLen()){
+                if(index >= 1 /*&& index <= admin.getRequestLen() */){
                     Request request = null;
                     if(admin.getRequests() != null) {
                         for(Request req : admin.getRequests()){
@@ -250,7 +250,7 @@ public class AdminControl {
                             request.getComment().setStatus(Status.REJECTED);
                         }
                         admin.removeReq(index);
-                        return "";
+                        return "operation was successful";
 
                     }else if(request.getRequestType() == RequestType.INCRESECREDIT){
                         if(isAccepted){
@@ -258,7 +258,7 @@ public class AdminControl {
                             hold.setCredit(hold.getCredit() + request.getAmount());
                         }
                         admin.removeReq(index);
-                        return "";
+                        return "operation was successful";
                     }
 
                 }else {

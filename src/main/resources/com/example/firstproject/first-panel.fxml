@@ -45,5 +45,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <ImageView fx:id="avatarIcon" fitHeight="54.0" fitWidth="60.0" layoutX="1367.0" layoutY="19.0" onMouseClicked="#customerPanel" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../pics/avatar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

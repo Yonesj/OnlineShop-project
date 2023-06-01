@@ -108,49 +108,47 @@ public class CustomerControl {
     }
 
 
-    public static String increaseCreditReq(Customer customer,String creditCard,int password,String cvv2,double amount){
-        Pattern cardPattern = Pattern.compile("\\d{4}( |-)\\d{4}( |-)\\d{4}( |-)\\d{4}");
-        Pattern cvv2Pattern = Pattern.compile("\\d{3,4}");
-
-        if(!cardPattern.matcher(creditCard).find()){
-            return "invalid credit card";
+    public static void increaseCreditReq(Customer customer,String creditCard,String cvv2,double amount)
+            throws InvalidCardException, InvalidCvv2Exception, InvalidPurchaseException {
+        if(!InvalidCardException.isCardValid(creditCard)){
+            throw new InvalidCardException( "invalid credit card");
         }
-        if(!cvv2Pattern.matcher(cvv2).find()){
-            return "invalid cvv2!";
+        if(!InvalidCvv2Exception.isCvv2Valid(cvv2)){
+            throw new InvalidCvv2Exception("invalid cvv2!");
         }
         if(amount <= 0){
-            return "amount could not be negetive!";
+            throw new InvalidPurchaseException("amount could not be negetive!");
         }
 
         Request request = new Request(customer,amount);
         admin.addRequest(request);
-        return "your request has been sent to admin";
     }
 
     public static String finalizePurchase(Customer customer,String code)
             throws InsufficientBalanceException, InsufficientStockException, InvalidDiscountCodeException {
         Discount discount = null;
-        boolean discountFound = false;
-        for (Discount dis : customer.getDiscounts()){
-            if(dis.getCode().equals(code)){
-                discountFound = true;
-                discount = dis;
-                break;
+        if(code != null) {
+            boolean discountFound = false;
+            for (Discount dis : customer.getDiscounts()) {
+                if (dis.getCode().equals(code)) {
+                    discountFound = true;
+                    discount = dis;
+                    break;
+                }
+            }
+            if (!discountFound) {
+                throw new InvalidDiscountCodeException("discount is invalid");
+            }
+
+            LocalDate now = LocalDate.now();
+            if (now.isAfter(discount.getExpireDate())) {
+                throw new InvalidDiscountCodeException("this discount has been expired");
+            }
+
+            if (discount.getCapacity() == 0) {
+                throw new InvalidDiscountCodeException("this discount has been expired");
             }
         }
-        if(!discountFound){
-            throw new InvalidDiscountCodeException("discount is invalid") ;
-        }
-
-        LocalDate now = LocalDate.now();
-        if(now.isAfter(discount.getExpireDate())){
-            throw new InvalidDiscountCodeException("this discount has been expired");
-        }
-
-        if(discount.getCapacity() == 0){
-            throw new InvalidDiscountCodeException("this discount has been expired");
-        }
-
         double amount = 0;
 
         for (int i=0; i < customer.getCart().size(); i++){
@@ -166,14 +164,17 @@ public class CustomerControl {
             }
         }
 
-        amount -= amount * discount.getPercent() / 100;
+        if(code != null) {
+            amount -= amount * discount.getPercent() / 100;
+        }
 
         if(customer.getCredit() < amount){
             throw new InsufficientBalanceException("not enough credit!");
         }
 
         customer.setCredit(customer.getCredit() - amount);
-        Invoice invoice = new Invoice(amount,"1402/01/14");
+        LocalDate currentDate = LocalDate.now();
+        Invoice invoice = new Invoice(amount,currentDate);
 
         for (Commodity commodity: customer.getCart()){
             commodity.setStock(commodity.getStock() - 1);

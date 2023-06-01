@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
@@ -27,6 +28,8 @@ public class FirstPanelController implements Initializable {
 
     @FXML
     private ImageView cartIcon;
+    @FXML
+    private ImageView avatarIcon;
 
     @FXML
     private TextField searchBar;
@@ -66,6 +69,17 @@ public class FirstPanelController implements Initializable {
             stage.show();
         }
     }
+
+    @FXML
+    void customerPanel(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("custom-panel.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Product page");
+        stage.show();
+    }
+
     @FXML
     void cart_btn(MouseEvent event) {
 
@@ -92,9 +106,51 @@ public class FirstPanelController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(customer == null){
-            signIn_loggin_btn.setVisible(true);
+            avatarIcon.setVisible(false);
         }else {
-
+            signIn_loggin_btn.setVisible(false);
+            avatarIcon.setVisible(true);
         }
+
+        searchBar.setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.ENTER){
+                String id = searchBar.getText();
+                Admin admin = Admin.getAdmin();
+                boolean commodityFound = false;
+
+                for (Commodity comm : admin.getCommodityList()){
+                    if(comm.getID().equals(id)){
+                        commodity = comm;
+                        commodityFound = true;
+                    }
+                }
+
+                if(commodityFound){
+                    Parent root1 = null;
+                    try {
+                        root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("first-panel.fxml")));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene1 = new Scene(root1,480,320);
+                    Stage stage1 = new Stage();
+                    stage1.setFullScreen(true);
+                    stage1.setScene(scene1);
+                    stage1.show();
+
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("commodity-panel.fxml")));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.setTitle("Product page");
+                    stage.show();
+                }
+            }
+        });
     }
 }

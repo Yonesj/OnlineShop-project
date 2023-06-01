@@ -141,6 +141,9 @@ public class AdminPanelController implements Initializable {
             sendCommand.setVisible(false);
             CommandScrollPane.setVisible(false);
 
+            usersScrollPane.setVisible(true);
+            usersTableView.setVisible(true);
+
             usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
             emailColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
             phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
@@ -160,6 +163,9 @@ public class AdminPanelController implements Initializable {
             inputTextfield.setVisible(false);
             sendCommand.setVisible(false);
             CommandScrollPane.setVisible(false);
+
+            requestsScrollPane.setVisible(true);
+            requestsTableView.setVisible(true);
 
             indexColumn.setCellValueFactory(new PropertyValueFactory<>("index"));
             customerColumn.setCellValueFactory(new PropertyValueFactory<>("customer"));

@@ -5,7 +5,7 @@ public class InvalidPurchaseException extends Exception{
         super("InvalidPurchaseException");
     }
     public InvalidPurchaseException(String errorMassage){
-        super("InvalidPurchaseException --> " + errorMassage);
+        super(errorMassage);
     }
 
 }
