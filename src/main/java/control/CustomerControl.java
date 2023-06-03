@@ -164,8 +164,8 @@ public class CustomerControl {
             }
         }
 
-        if(code != null) {
-            amount -= amount * discount.getPercent() / 100;
+        if(discount != null) {
+            amount -= amount * (discount.getPercent() / 100);
         }
 
         if(customer.getCredit() < amount){

@@ -42,6 +42,8 @@ public class ChangingPasswordPanelController {
         stage.setScene(scene);
         stage.setTitle("changing password page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -63,8 +65,10 @@ public class ChangingPasswordPanelController {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
                 stage.setScene(scene);
-                stage.setTitle("Product page");
+                stage.setTitle("customer page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             } catch (InvalidPasswordException | IOException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText(e.getMessage());

@@ -136,6 +136,8 @@ public class FirstPanelController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Product page");
             stage.show();
+            stage.centerOnScreen();
+            stage.setResizable(false);
         }
     }
 
@@ -144,10 +146,11 @@ public class FirstPanelController implements Initializable {
         Parent root2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loggin-panel.fxml")));
         Scene scene = new Scene(root2);
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-        stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("Sign in page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -158,6 +161,8 @@ public class FirstPanelController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("customer page");
         stage.show();
+        stage.centerOnScreen();
+        stage.setResizable(false);
     }
 
     @FXML
@@ -169,6 +174,8 @@ public class FirstPanelController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("cart page");
             stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("you have to loggin first");
@@ -400,6 +407,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -418,6 +427,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -436,6 +447,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -454,6 +467,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -472,6 +487,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -490,6 +507,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -508,6 +527,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -526,6 +547,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }
@@ -544,6 +567,8 @@ public class FirstPanelController implements Initializable {
                 stage.setScene(scene);
                 stage.setTitle("Product page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }
         }
     }

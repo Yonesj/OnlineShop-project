@@ -294,7 +294,7 @@ public class AdminControl {
                 switch (subString[2].trim()){
                     case "firstPurchase":
                         for (Customer customer : CustomerControl.getCustomers()){
-                            if(customer.getShoppinHistory().size() == 1){
+                            if(customer.getShoppinHistory().size() == 0){
                                 customer.addDiscount(discountHolder);
                             }
                         }

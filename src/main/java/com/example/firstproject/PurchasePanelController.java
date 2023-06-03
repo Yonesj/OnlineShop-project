@@ -48,8 +48,10 @@ public class PurchasePanelController {
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("changing password page");
+        stage.setTitle("customer page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -69,8 +71,10 @@ public class PurchasePanelController {
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("changing password page");
+            stage.setTitle("customer page");
             stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
         } catch (InvalidCardException | InvalidCvv2Exception | InvalidPurchaseException | IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());

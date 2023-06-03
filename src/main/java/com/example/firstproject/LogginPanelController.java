@@ -61,9 +61,10 @@ public class LogginPanelController {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
                 stage.setScene(scene);
-                stage.setResizable(false);
                 stage.setTitle("admin page");
                 stage.show();
+                stage.setResizable(false);
+                stage.centerOnScreen();
             }else {
                 try {
                     customer = CustomerControl.loggin(username,password);
@@ -94,10 +95,11 @@ public class LogginPanelController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signup-panel.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-        stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("Sign up page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML

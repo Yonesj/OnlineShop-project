@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.connectors.Discount;
 import model.connectors.Request;
 import model.connectors.RequestType;
 import model.user.Admin;
@@ -23,10 +24,14 @@ import model.user.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AdminPanelController implements Initializable {
+    private Admin admin = Admin.getAdmin();
+
+
     @FXML
     private Button openCommandPrompt;
 
@@ -62,6 +67,20 @@ public class AdminPanelController implements Initializable {
     @FXML
     private TableColumn<Request, RequestType> typeColumn;
 
+    @FXML
+    private MenuItem viewDiscounts;
+    @FXML
+    private ScrollPane dicountScrollPane;
+    @FXML
+    private TableView<Discount> discountTable;
+    @FXML
+    private TableColumn<Discount, String> codeColumn;
+    @FXML
+    private TableColumn<Discount, Double> percentColumn;
+    @FXML
+    private TableColumn<Discount, Integer> capacityColumn;
+    @FXML
+    private TableColumn<Discount, LocalDate> dateColumn;
 
     @FXML
     private Button helpCommand;
@@ -95,6 +114,8 @@ public class AdminPanelController implements Initializable {
         usersScrollPane.setVisible(false);
         helpResultLabel.setVisible(false);
         HelpscrollPane.setVisible(false);
+        discountTable.setVisible(false);
+        dicountScrollPane.setVisible(false);
 
         CommandScrollPane.setVisible(true);
         inputTextfield.setVisible(true);
@@ -112,6 +133,8 @@ public class AdminPanelController implements Initializable {
         inputTextfield.setVisible(false);
         sendCommand.setVisible(false);
         CommandScrollPane.setVisible(false);
+        discountTable.setVisible(false);
+        dicountScrollPane.setVisible(false);
 
         String result = AdminControl.processCommand("help");
         helpResultLabel.setText(result);
@@ -155,6 +178,8 @@ public class AdminPanelController implements Initializable {
             inputTextfield.setVisible(false);
             sendCommand.setVisible(false);
             CommandScrollPane.setVisible(false);
+            discountTable.setVisible(false);
+            dicountScrollPane.setVisible(false);
 
             usersScrollPane.setVisible(true);
             usersTableView.setVisible(true);
@@ -178,6 +203,8 @@ public class AdminPanelController implements Initializable {
             inputTextfield.setVisible(false);
             sendCommand.setVisible(false);
             CommandScrollPane.setVisible(false);
+            discountTable.setVisible(false);
+            dicountScrollPane.setVisible(false);
 
             requestsScrollPane.setVisible(true);
             requestsTableView.setVisible(true);
@@ -187,7 +214,6 @@ public class AdminPanelController implements Initializable {
             typeColumn.setCellValueFactory(new PropertyValueFactory<>("requestType"));
 
             requestsTableView.getItems().clear();
-            Admin admin = Admin.getAdmin();
             for (Request request: admin.getRequests()){
                 if(request.getRequestType() == RequestType.COMMENT){
                     TableColumn<Request, String> commentColumn = new TableColumn<>("Comment");
@@ -203,6 +229,31 @@ public class AdminPanelController implements Initializable {
                     requestsTableView.getItems().add(request);
                 }
             }
+        });
+
+        viewDiscounts.setOnAction(event -> {
+            requestsTableView.setVisible(false);
+            requestsScrollPane.setVisible(false);
+            usersTableView.setVisible(false);
+            usersScrollPane.setVisible(false);
+            helpResultLabel.setVisible(false);
+            HelpscrollPane.setVisible(false);
+            commandResultLable.setVisible(false);
+            inputTextfield.setVisible(false);
+            sendCommand.setVisible(false);
+            CommandScrollPane.setVisible(false);
+
+            dicountScrollPane.setVisible(true);
+            discountTable.setVisible(true);
+
+            codeColumn.setCellValueFactory(new PropertyValueFactory<>("code"));
+            percentColumn.setCellValueFactory(new PropertyValueFactory<>("percent"));
+            capacityColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory<>("expireDate"));
+
+            discountTable.getItems().clear();
+            ObservableList<Discount> data = FXCollections.observableArrayList(admin.getDiscounts());
+            discountTable.setItems(data);
         });
     }
 }

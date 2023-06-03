@@ -72,6 +72,8 @@ public class CustomerPanelController implements Initializable{
         stage.setScene(scene);
         stage.setTitle("cart page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -80,8 +82,10 @@ public class CustomerPanelController implements Initializable{
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("changing password page");
+        stage.setTitle("increase credit page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -92,6 +96,8 @@ public class CustomerPanelController implements Initializable{
         stage.setScene(scene);
         stage.setTitle("history page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -102,6 +108,8 @@ public class CustomerPanelController implements Initializable{
         stage.setScene(scene);
         stage.setTitle("changing password page");
         stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -131,6 +139,18 @@ public class CustomerPanelController implements Initializable{
         stage1.setFullScreen(true);
         stage1.setScene(scene1);
         stage1.show();
+    }
+
+    @FXML
+    void discount_btn(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("discount-panel.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("discounts");
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @Override
