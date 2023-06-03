@@ -99,6 +99,7 @@ public class SignUpPanelController {
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loggin-panel.fxml")));
                 Scene scene = new Scene(root);
                 Stage previousStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+                previousStage.setResizable(false);
                 previousStage.setScene(scene);
                 previousStage.setTitle("Sign in page");
                 previousStage.show();
@@ -109,5 +110,19 @@ public class SignUpPanelController {
                 alert.show();
             }
         }
+    }
+
+    @FXML
+    void back(MouseEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.hide();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loggin-panel.fxml")));
+        Scene scene1 = new Scene(root);
+        Stage stage1 = new Stage();
+        stage1.setResizable(false);
+        stage1.setScene(scene1);
+        stage1.show();
     }
 }

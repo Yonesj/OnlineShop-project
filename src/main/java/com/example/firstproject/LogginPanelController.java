@@ -61,6 +61,7 @@ public class LogginPanelController {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
                 stage.setScene(scene);
+                stage.setResizable(false);
                 stage.setTitle("admin page");
                 stage.show();
             }else {
@@ -70,6 +71,13 @@ public class LogginPanelController {
                     Node source = (Node) event.getSource();
                     Stage stage = (Stage) source.getScene().getWindow();
                     stage.hide();
+
+                    Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("first-panel.fxml")));
+                    Scene scene1 = new Scene(root1, 480, 320);
+                    Stage stage1 = new Stage();
+                    stage1.setFullScreen(true);
+                    stage1.setScene(scene1);
+                    stage1.show();
 
                 }catch (NotFound404Exception | InvalidPasswordException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -86,9 +94,24 @@ public class LogginPanelController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signup-panel.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("Sign up page");
         stage.show();
+    }
+
+    @FXML
+    void back(MouseEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.hide();
+
+        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("first-panel.fxml")));
+        Scene scene1 = new Scene(root1, 480, 320);
+        Stage stage1 = new Stage();
+        stage1.setFullScreen(true);
+        stage1.setScene(scene1);
+        stage1.show();
     }
 
     public Customer getCustomer() {

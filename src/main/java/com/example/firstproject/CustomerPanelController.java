@@ -121,13 +121,16 @@ public class CustomerPanelController implements Initializable{
 
     @FXML
     void back(MouseEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.hide();
+
         Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("first-panel.fxml")));
         Scene scene1 = new Scene(root1,480,320);
         Stage stage1 = new Stage();
         stage1.setFullScreen(true);
         stage1.setScene(scene1);
         stage1.show();
-
     }
 
     @Override

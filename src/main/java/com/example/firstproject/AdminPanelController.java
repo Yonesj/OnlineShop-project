@@ -6,8 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -18,7 +21,9 @@ import model.user.Admin;
 import model.user.Customer;
 import model.user.User;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AdminPanelController implements Initializable {
@@ -115,16 +120,26 @@ public class AdminPanelController implements Initializable {
     }
 
     @FXML
-    void logout_btn(MouseEvent event) {
+    void logout_btn(MouseEvent event) throws IOException {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.hide();
+
+        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("first-panel.fxml")));
+        Scene scene1 = new Scene(root1, 480, 320);
+        Stage stage1 = new Stage();
+        stage1.setFullScreen(true);
+        stage1.setScene(scene1);
+        stage1.show();
     }
 
     @FXML
     void sendCommand(MouseEvent event) {
-        String command = inputTextfield.getText();
-        String result = AdminControl.processCommand(command);
+        String[] commands = inputTextfield.getText().split("\n");
+        String result = "";
+        for (int i = 0; i < commands.length ; i++) {
+            result = AdminControl.processCommand(commands[i]);
+        }
         commandResultLable.setText(result);
         commandResultLable.setVisible(true);
     }

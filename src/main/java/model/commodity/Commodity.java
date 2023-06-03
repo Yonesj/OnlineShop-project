@@ -80,16 +80,7 @@ public abstract class Commodity implements Comparable{
         }
 
 
-        if(getSortBy() == SortBy.AVAILABILITY){
-            if(this.getStock() > obj2.getStock()){
-                return 1;
-            }else if(this.getStock() < obj2.getStock()){
-                return -1;
-            }else {
-                return 0;
-            }
-        }
-        else if(getSortBy() == SortBy.SCORE){
+        if(getSortBy() == SortBy.SCORE){
             if(this.getAveScore() > obj2.getAveScore()){
                 return 1;
             }else if(this.getAveScore() < obj2.getAveScore()){
@@ -128,12 +119,30 @@ public abstract class Commodity implements Comparable{
             }
         }
         else {
-            if(thisIndex < obj2Index){
-                return -1;
-            }else if(thisIndex > obj2Index){
+            if(this.getName().compareTo(obj2.getName()) > 0){
                 return 1;
+            }else if(this.getName().compareTo(obj2.getName()) < 0){
+                return -1;
             }else {
-                return 0;
+                if(this.getAveScore() > obj2.getAveScore()){
+                    return 1;
+                }else if(this.getAveScore() < obj2.getAveScore()){
+                    return -1;
+                }else {
+                    if(this.getPrice() < obj2.getPrice()){
+                        return 1;
+                    }else if(this.getPrice() > obj2.getPrice()){
+                        return -1;
+                    }else {
+                        if(this.getStock() > obj2.getStock()){
+                            return 1;
+                        }else if(this.getStock() < obj2.getStock()){
+                            return -1;
+                        }else {
+                            return 0;
+                        }
+                    }
+                }
             }
         }
 
@@ -182,7 +191,7 @@ public abstract class Commodity implements Comparable{
         return category;
     }
 
-    public SortBy getSortBy() {
+    public static SortBy getSortBy() {
         return sortBy;
     }
 
@@ -209,8 +218,8 @@ public abstract class Commodity implements Comparable{
         this.stock = stock;
     }
 
-    public void setSortBy(SortBy sortBy) {
-        this.sortBy = sortBy;
+    public static void setSortBy(SortBy sortBy1) {
+        sortBy = sortBy1;
     }
 
     //calculate score

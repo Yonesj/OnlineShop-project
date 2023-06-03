@@ -23,8 +23,8 @@ public class CommodityControl {
     private boolean carFilter = false;
     private boolean bicycleFilter = false;
     private boolean avaliableFilter= false;
-    private double priceUPlimit = -1;
-    private double priceDOWNlimit = -1;
+    private double priceUPlimit = 0;
+    private double priceDOWNlimit = 0;
     private float scoreLimit = 0;
 
     public CommodityControl(){
@@ -43,10 +43,10 @@ public class CommodityControl {
                 if(avaliableFilter && (commodity.getStock() == 0)){
                     continue;
                 }
-                if(priceDOWNlimit != -1 && (commodity.getPrice() < priceDOWNlimit)){
+                if(commodity.getPrice() < priceDOWNlimit){
                     continue;
                 }
-                if(priceUPlimit != -1 && (commodity.getPrice() > priceUPlimit)){
+                if(priceUPlimit != 0 && (commodity.getPrice() > priceUPlimit)){
                     continue;
                 }
                 //filter by department
@@ -82,10 +82,10 @@ public class CommodityControl {
                 if(avaliableFilter && (commodity.getStock() == 0)){
                     continue;
                 }
-                if(priceDOWNlimit != -1 && (commodity.getPrice() < priceDOWNlimit)){
+                if(commodity.getPrice() < priceDOWNlimit){
                     continue;
                 }
-                if(priceUPlimit != -1 && (commodity.getPrice() > priceUPlimit)){
+                if(priceUPlimit != 0 && (commodity.getPrice() > priceUPlimit)){
                     continue;
                 }
 

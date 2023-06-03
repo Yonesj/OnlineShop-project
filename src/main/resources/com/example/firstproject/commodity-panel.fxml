@@ -81,7 +81,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Pane fx:id="pane" layoutX="49.0" layoutY="105.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="250.0">
+      <Pane fx:id="pane" layoutX="46.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="250.0">
          <children>
             <ImageView fx:id="commodityImage" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
          </children>

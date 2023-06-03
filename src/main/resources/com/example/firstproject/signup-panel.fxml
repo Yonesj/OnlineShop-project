@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -67,5 +69,10 @@
             <Insets />
          </opaqueInsets>
       </Label>
+      <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="24.0" layoutY="30.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

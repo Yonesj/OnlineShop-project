@@ -2,53 +2,577 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.FirstPanelController">
-   <children>
-      <Label contentDisplay="CENTER" layoutX="30.0" layoutY="4.0" prefHeight="78.0" prefWidth="233.0" text="online shop" textAlignment="CENTER" textFill="#ed1b37" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0">
-         <font>
-            <Font name="Cooper Black" size="36.0" />
-         </font>
-      </Label>
-      <Separator layoutX="-1.0" layoutY="88.0" prefHeight="0.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
-      <TextField fx:id="searchBar" layoutX="290.0" layoutY="22.0" onKeyReleased="#search" prefHeight="47.0" prefWidth="497.0" promptText="search" style="-fx-background-color: #F1F2F4; -fx-background-radius: 50;" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="22.0">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
-      <ImageView fx:id="search_img" fitHeight="37.0" fitWidth="39.0" layoutX="737.0" layoutY="27.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pics/icon-magnifier.png" />
-         </image>
-         <effect>
-            <Blend />
-         </effect>
-      </ImageView>
-      <ImageView fx:id="cartIcon" fitHeight="96.0" fitWidth="60.0" layoutX="1443.0" layoutY="18.0" onMouseClicked="#cart_btn" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1443.0" AnchorPane.topAnchor="18.0">
-         <image>
-            <Image url="@../../../pics/shopping-cart.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="signIn_loggin_btn" layoutX="1223.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#signIn_loggin_btn" prefHeight="47.0" prefWidth="190.0" style="-fx-background-radius: 30;" text="Sign in   |   Sign up" AnchorPane.leftAnchor="1223.0" AnchorPane.topAnchor="24.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <ImageView fx:id="avatarIcon" fitHeight="54.0" fitWidth="60.0" layoutX="1367.0" layoutY="19.0" onMouseClicked="#customerPanel" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../../pics/avatar.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2300.0" prefWidth="1546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.FirstPanelController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2300.0" prefWidth="1518.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="30.0" layoutY="4.0" prefHeight="78.0" prefWidth="233.0" text="online shop" textAlignment="CENTER" textFill="#ed1b37" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0">
+               <font>
+                  <Font name="Cooper Black" size="36.0" />
+               </font>
+            </Label>
+            <Separator layoutX="-1.0" layoutY="88.0" prefHeight="0.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
+            <TextField fx:id="searchBar" layoutX="290.0" layoutY="22.0" onKeyReleased="#search" prefHeight="47.0" prefWidth="497.0" promptText="search" style="-fx-background-color: #F1F2F4; -fx-background-radius: 50;" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="22.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <ImageView fx:id="search_img" fitHeight="37.0" fitWidth="39.0" layoutX="737.0" layoutY="27.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/icon-magnifier.png" />
+               </image>
+               <effect>
+                  <Blend />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="cartIcon" fitHeight="96.0" fitWidth="60.0" layoutX="1443.0" layoutY="18.0" onMouseClicked="#cart_btn" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1443.0" AnchorPane.topAnchor="18.0">
+               <image>
+                  <Image url="@../../../pics/shopping-cart.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="signIn_loggin_btn" layoutX="1223.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#signIn_loggin_btn" prefHeight="47.0" prefWidth="190.0" style="-fx-background-radius: 30;" text="Sign in   |   Sign up" AnchorPane.leftAnchor="1223.0" AnchorPane.topAnchor="24.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="avatarIcon" fitHeight="54.0" fitWidth="60.0" layoutX="1367.0" layoutY="19.0" onMouseClicked="#customerPanel" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../pics/avatar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="vehicle_img" fitHeight="189.0" fitWidth="190.0" layoutX="328.0" layoutY="181.0" onMouseClicked="#vehicleCategory" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/vehicle.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Stationary_img" fitHeight="189.0" fitWidth="189.0" layoutX="567.0" layoutY="181.0" onMouseClicked="#stationaryCatrgory" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/stationary.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="food_img" fitHeight="189.0" fitWidth="189.0" layoutX="825.0" layoutY="181.0" onMouseClicked="#foodCategory" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/food.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="digital_img" fitHeight="189.0" fitWidth="189.0" layoutX="1072.0" layoutY="181.0" onMouseClicked="#digitalCategory" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/electronics.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="701.0" layoutY="111.0" prefHeight="54.0" prefWidth="190.0" text="categories" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="375.0" layoutY="370.0" prefHeight="37.0" prefWidth="94.0" text="vehicle" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="606.0" layoutY="370.0" prefHeight="37.0" prefWidth="94.0" text="stationary" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="872.0" layoutY="370.0" prefHeight="37.0" prefWidth="94.0" text="food" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="1119.0" layoutY="370.0" prefHeight="37.0" prefWidth="94.0" text="digital" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CRIMSON" height="572.0" layoutX="109.0" layoutY="526.0" stroke="CRIMSON" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="280.0" />
+            <Separator layoutX="116.0" layoutY="452.0" prefHeight="10.0" prefWidth="1319.0" />
+            <Label alignment="CENTER" layoutX="154.0" layoutY="543.0" prefHeight="54.0" prefWidth="190.0" text="Filters" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Slider fx:id="maxSlider" layoutX="149.0" layoutY="682.0" prefHeight="14.0" prefWidth="199.0" />
+            <Button defaultButton="true" layoutX="163.0" layoutY="1041.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="47.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" text="reset" textFill="CRIMSON" />
+            <Label layoutX="153.0" layoutY="635.0" prefHeight="54.0" prefWidth="68.0" text="Max" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button defaultButton="true" layoutX="228.0" layoutY="1041.0" mnemonicParsing="false" onMouseClicked="#apply" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" text="Apply" textFill="CRIMSON" />
+            <Label layoutX="153.0" layoutY="730.0" prefHeight="54.0" prefWidth="68.0" text="Min" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Slider fx:id="minSlider" layoutX="149.0" layoutY="777.0" prefHeight="14.0" prefWidth="199.0" />
+            <Label layoutX="151.0" layoutY="924.0" prefHeight="54.0" prefWidth="118.0" text="Available" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="151.0" layoutY="825.0" prefHeight="54.0" prefWidth="118.0" text="Score" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Slider fx:id="scoreSlider" layoutX="149.0" layoutY="872.0" prefHeight="14.0" prefWidth="199.0" />
+            <Label layoutX="450.0" layoutY="534.0" prefHeight="35.0" prefWidth="74.0" text="sort by:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Separator layoutX="439.0" layoutY="594.0" prefHeight="2.0" prefWidth="999.0" />
+            <Label fx:id="defaultSort" layoutX="569.0" layoutY="534.0" onMouseClicked="#sortByDefault" prefHeight="35.0" prefWidth="74.0" text="default">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="expensivnessSort" layoutX="818.0" layoutY="534.0" onMouseClicked="#sortByExpensivness" prefHeight="35.0" prefWidth="108.0" text="expencivness">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="cheapnessSort" layoutX="681.0" layoutY="534.0" onMouseClicked="#sortByCheapness" prefHeight="35.0" prefWidth="91.0" text="cheapness">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="alphabetSort" layoutX="970.0" layoutY="534.0" onMouseClicked="#sortByAlphabet" prefHeight="35.0" prefWidth="86.0" text="alphabet">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="recentSort" layoutX="1102.0" layoutY="534.0" onMouseClicked="#sortByRecent" prefHeight="35.0" prefWidth="90.0" text="most recnt">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreSort" layoutX="1250.0" layoutY="534.0" onMouseClicked="#sortByScore" prefHeight="35.0" prefWidth="86.0" text="score">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <GridPane fx:id="gridPane" layoutX="439.0" layoutY="635.0" prefHeight="1380.0" prefWidth="999.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <AnchorPane fx:id="anchor00" onMouseClicked="#goToRelatedPanel00" prefHeight="401.0" prefWidth="242.0">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor01" onMouseClicked="#goToRelatedPanel01" prefHeight="401.0" prefWidth="242.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor02" onMouseClicked="#goToRelatedPanel02" prefHeight="401.0" prefWidth="242.0" GridPane.columnIndex="2">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor10" onMouseClicked="#goToRelatedPanel10" prefHeight="401.0" prefWidth="242.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor11" onMouseClicked="#goToRelatedPanel11" prefHeight="401.0" prefWidth="242.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor12" onMouseClicked="#goToRelatedPanel12" prefHeight="401.0" prefWidth="242.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor20" onMouseClicked="#goToRelatedPanel20" prefHeight="401.0" prefWidth="242.0" GridPane.rowIndex="2">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor21" onMouseClicked="#goToRelatedPanel21" prefHeight="401.0" prefWidth="242.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchor22" onMouseClicked="#goToRelatedPanel22" prefHeight="401.0" prefWidth="242.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <children>
+                        <Label layoutX="83.0" layoutY="334.0" prefHeight="27.0" prefWidth="150.0" text="id">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="47.0" layoutY="284.0" prefHeight="46.0" prefWidth="242.0" text="name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="362.0" prefHeight="27.0" prefWidth="51.0" text="score">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="83.0" layoutY="405.0" prefHeight="27.0" prefWidth="149.0" text="price">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="334.0" prefHeight="27.0" prefWidth="22.0" text="id:">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="43.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/star-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="44.0" layoutX="40.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pics/usd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+            <ImageView fx:id="next_img" fitHeight="74.0" fitWidth="73.0" layoutX="788.0" layoutY="2111.0" onMouseClicked="#next" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/next.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="back_img" fitHeight="72.0" fitWidth="76.0" layoutX="691.0" layoutY="2113.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/back.png" />
+               </image>
+            </ImageView>
+            <CheckBox fx:id="availabilityCheckBox" layoutX="325.0" layoutY="935.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="34.0" />
+            <Label fx:id="maxValue" alignment="CENTER_RIGHT" layoutX="246.0" layoutY="635.0" prefHeight="54.0" prefWidth="98.0" text="Max" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="minValue" alignment="CENTER_RIGHT" layoutX="246.0" layoutY="730.0" prefHeight="54.0" prefWidth="98.0" text="min" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreValue" alignment="CENTER_RIGHT" layoutX="246.0" layoutY="825.0" prefHeight="54.0" prefWidth="98.0" text="score" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

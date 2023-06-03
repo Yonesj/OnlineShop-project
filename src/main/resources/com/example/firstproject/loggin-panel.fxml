@@ -6,13 +6,15 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="404.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.LogginPanelController">
    <children>
-      <Label alignment="CENTER" layoutX="99.0" layoutY="21.0" prefHeight="74.0" prefWidth="202.0" text="online shop" textFill="#ed1b37" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="102.60000000000002" AnchorPane.topAnchor="21.0">
+      <Label alignment="CENTER" layoutX="101.0" layoutY="14.0" prefHeight="74.0" prefWidth="202.0" text="online shop" textFill="#ed1b37" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="100.60000000000002" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -50,5 +52,10 @@
             <Insets />
          </opaqueInsets>
       </Label>
+      <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="25.0" layoutY="33.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
