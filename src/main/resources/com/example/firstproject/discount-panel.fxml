@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.DiscountPanelController">
+   <children>
+      <ScrollPane fx:id="dicountScrollPane" layoutX="111.0" layoutY="110.0" prefHeight="262.0" prefWidth="379.0">
+         <content>
+            <TableView fx:id="discountTable" prefHeight="542.0" prefWidth="361.0">
+               <columns>
+                  <TableColumn fx:id="codeColumn" prefWidth="131.99999314546585" text="code" />
+                  <TableColumn fx:id="percentColumn" prefWidth="74.40007019042969" text="percentage" />
+                  <TableColumn fx:id="dateColumn" prefWidth="144.800048828125" text="expiration Date" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="34.0" layoutY="24.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/back.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="6.0" prefHeight="74.0" prefWidth="202.0" text="Discounts" textFill="#ed1b37">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.ShoppingHistoryPanelController">
+   <children>
+      <ImageView fx:id="back_img" fitHeight="38.0" fitWidth="36.0" layoutX="38.0" layoutY="33.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/left-arrow.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="441.0" layoutX="38.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="823.0" />
+      <Label alignment="TOP_CENTER" layoutX="304.0" layoutY="24.0" text="shopping History" textFill="#ed1b37">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="376.0" layoutY="153.0" prefHeight="358.0" prefWidth="460.0">
+         <content>
+            <TableView fx:id="commodities" prefHeight="558.0" prefWidth="511.0">
+               <columns>
+                  <TableColumn fx:id="nameColumn" prefWidth="167.2000396847725" text="name" />
+                  <TableColumn fx:id="idColumn" prefWidth="144.00001525878906" text="ID" />
+                  <TableColumn fx:id="scoreColumn" minWidth="0.0" prefWidth="85.5999755859375" text="ave score" />
+                  <TableColumn fx:id="priceColumn" prefWidth="85.5999755859375" text="price" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Separator layoutX="342.0" layoutY="132.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="0.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" />
+      <ScrollPane layoutX="62.0" layoutY="153.0" prefHeight="358.0" prefWidth="258.0">
+         <content>
+            <TableView fx:id="invoiceTable" prefHeight="568.0" prefWidth="241.0">
+              <columns>
+                  <TableColumn fx:id="invoiceColumn" prefWidth="75.0" text="Invoices">
+                     <columns>
+                      <TableColumn fx:id="invoiceIDcoulumn" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="dateColumn" prefWidth="75.0" text="date" />
+                        <TableColumn fx:id="invoicePriceColumn" prefWidth="90.4000244140625" text="price" />
+                     </columns>
+                  </TableColumn>
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

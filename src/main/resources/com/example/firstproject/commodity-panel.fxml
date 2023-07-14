@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="900.0" style="-fx-background-color: ffffff; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproject.CommodityPanelController">
+   <children>
+      <Label fx:id="commodityName" layoutX="51.0" layoutY="32.0" prefHeight="57.0" prefWidth="423.0" text="Label">
+         <font>
+            <Font size="39.0" />
+         </font></Label>
+      <Label layoutX="324.0" layoutY="105.0" prefHeight="37.0" prefWidth="69.0" text="Score">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLabel" layoutX="429.0" layoutY="108.0" prefHeight="30.0" prefWidth="111.0" text="scoreLabel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="154.0" prefHeight="37.0" prefWidth="69.0" text="Price">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="208.0" prefHeight="37.0" prefWidth="69.0" text="ID">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="id" layoutX="429.0" layoutY="211.0" prefHeight="30.0" prefWidth="194.0" text="id">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="availability" layoutX="324.0" layoutY="262.0" prefHeight="38.0" prefWidth="111.0" text="availability">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="483.0" layoutX="665.0" layoutY="108.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="194.0" />
+      <Label fx:id="secondaryPrice" layoutX="528.0" layoutY="157.0" prefHeight="30.0" prefWidth="98.0" text="secondaryP">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceinBox" alignment="CENTER" layoutX="709.0" layoutY="124.0" prefHeight="37.0" prefWidth="69.0" text="Price">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="790.0" layoutY="134.0" text="usd" />
+      <Button fx:id="addToCart_btn" layoutX="700.0" layoutY="284.0" mnemonicParsing="false" onMouseClicked="#addToCart" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Add to Cart" textFill="#e8e8e8" />
+      <Button fx:id="comment_btn" layoutX="700.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#comment" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Comment" textFill="#e8e8e8" />
+      <Button fx:id="score_btn" layoutX="700.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#score" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Score" textFill="#e8e8e8" />
+      <Button fx:id="back_btn" layoutX="700.0" layoutY="519.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Back" textFill="#e8e8e8" />
+      <Separator layoutX="694.0" layoutY="171.0" prefHeight="0.0" prefWidth="136.0" />
+      <Separator layoutX="694.0" layoutY="260.0" prefHeight="0.0" prefWidth="136.0" />
+      <TableView fx:id="commentTable" layoutX="49.0" layoutY="391.0" prefHeight="202.0" prefWidth="557.0">
+        <columns>
+          <TableColumn fx:id="userColumn" prefWidth="98.39998626708984" text="user" />
+          <TableColumn fx:id="isbuyedColumn" prefWidth="52.0" text="is buyed" />
+            <TableColumn fx:id="commentColumn" prefWidth="406.4000183105469" text="comment" />
+        </columns>
+      </TableView>
+      <Text fx:id="primaryPrice" fontSmoothingType="LCD" layoutX="431.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="primaryP" wrappingWidth="85.60003051757815">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Pane fx:id="pane" layoutX="46.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="250.0">
+         <children>
+            <ImageView fx:id="commodityImage" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Rectangle fx:id="commentBox" arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="186.0" layoutX="45.0" layoutY="407.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" visible="false" width="558.0" />
+      <TextArea fx:id="commentTextfield" layoutX="75.0" layoutY="436.0" prefHeight="105.0" prefWidth="500.0" promptText="Enter your comment" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="commentRequest" layoutX="477.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#commentRequest" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Request" textFill="#e8e8e8" visible="false" />
+      <Rectangle fx:id="scoreBox" arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="142.0" layoutX="51.0" layoutY="448.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" visible="false" width="368.0" />
+      <Label fx:id="scorePrompt" layoutX="75.0" layoutY="463.0" prefHeight="38.0" prefWidth="314.0" text="Enter your score [0 - 5]" visible="false">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="scoreTextfield" layoutX="77.0" layoutY="523.0" prefHeight="38.0" prefWidth="188.0" visible="false" />
+      <Button fx:id="scoreSubmit" layoutX="290.0" layoutY="522.0" mnemonicParsing="false" onMouseClicked="#scoreSubmit" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="submit" textFill="#e8e8e8" visible="false" />
+      <Rectangle fx:id="shopBox" arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="142.0" layoutX="51.0" layoutY="448.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" visible="false" width="450.0" />
+      <Label fx:id="shopCommand" layoutX="85.0" layoutY="473.0" prefHeight="38.0" prefWidth="384.0" text="how many item you wana purchase?" visible="false">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Spinner fx:id="itemSpinner" layoutX="85.0" layoutY="531.0" prefHeight="38.0" prefWidth="188.0" visible="false" />
+      <Button fx:id="addButton" layoutX="381.0" layoutY="531.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="38.0" prefWidth="76.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Add" textFill="#e8e8e8" visible="false" />
+      <Button fx:id="cancelBtn" layoutX="290.0" layoutY="531.0" mnemonicParsing="false" onMouseClicked="#cancelShop" prefHeight="38.0" prefWidth="76.0" style="-fx-background-color: #DC143C; -fx-background-radius: 10;" text="Cancel" textFill="#e8e8e8" visible="false" />
+   </children>
+</AnchorPane>
