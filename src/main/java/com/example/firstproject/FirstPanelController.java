@@ -1,6 +1,7 @@
 package com.example.firstproject;
 
 import control.CommodityControl;
+import javafx.animation.ScaleTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -18,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.commodity.Commodity;
 import model.commodity.SortBy;
 import model.commodity.subclasses.PersonalComputer;
@@ -50,6 +53,15 @@ public class FirstPanelController implements Initializable {
     private ImageView search_img;
     @FXML
     private Button signIn_loggin_btn;
+
+    @FXML
+    private ImageView food_img;
+    @FXML
+    private ImageView digital_img;
+    @FXML
+    private ImageView Stationary_img;
+    @FXML
+    private ImageView vehicle_img;
 
 
     @FXML
@@ -766,6 +778,162 @@ public class FirstPanelController implements Initializable {
                 maxPrice = (Double) newValue;
                 minSlider.setMax((Double) newValue);
             }
+        });
+
+
+        ScaleTransition maximize = new ScaleTransition();
+        maximize.setByX(.1);
+        maximize.setByY(.1);
+        maximize.setAutoReverse(false);
+        maximize.setCycleCount(1);
+        maximize.setDuration(Duration.millis(200));
+
+        ScaleTransition minimize = new ScaleTransition();
+        minimize.setByY(-0.1);
+        minimize.setByX(-0.1);
+        minimize.setAutoReverse(false);
+        minimize.setCycleCount(1);
+        minimize.setDuration(Duration.millis(200));
+
+        DropShadow shadow = new DropShadow();
+
+        signIn_loggin_btn.setOnMouseEntered(event -> {
+            signIn_loggin_btn.setEffect(shadow);
+            maximize.setNode(signIn_loggin_btn);
+            maximize.play();
+        });
+
+        signIn_loggin_btn.setOnMouseExited(event -> {
+            signIn_loggin_btn.setEffect(null);
+            minimize.setNode(signIn_loggin_btn);
+            minimize.play();
+        });
+
+        anchor00.setOnMouseEntered(event -> {
+            maximize.setNode(anchor00);
+            maximize.play();
+        });
+
+        anchor01.setOnMouseEntered(event -> {
+            maximize.setNode(anchor01);
+            maximize.play();
+        });
+
+        anchor02.setOnMouseEntered(event -> {
+            maximize.setNode(anchor02);
+            maximize.play();
+        });
+
+        anchor10.setOnMouseEntered(event -> {
+            maximize.setNode(anchor10);
+            maximize.play();
+        });
+
+        anchor11.setOnMouseEntered(event -> {
+            maximize.setNode(anchor11);
+            maximize.play();
+        });
+
+        anchor12.setOnMouseEntered(event -> {
+            maximize.setNode(anchor12);
+            maximize.play();
+        });
+
+        anchor20.setOnMouseEntered(event -> {
+            maximize.setNode(anchor20);
+            maximize.play();
+        });
+
+        anchor21.setOnMouseEntered(event -> {
+            maximize.setNode(anchor21);
+            maximize.play();
+        });
+
+        anchor22.setOnMouseEntered(event -> {
+            maximize.setNode(anchor22);
+            maximize.play();
+        });
+
+
+        anchor00.setOnMouseExited(event -> {
+            minimize.setNode(anchor00);
+            minimize.play();
+        });
+
+        anchor01.setOnMouseExited(event -> {
+            minimize.setNode(anchor01);
+            minimize.play();
+        });
+
+        anchor02.setOnMouseExited(event -> {
+            minimize.setNode(anchor02);
+            minimize.play();
+        });
+
+        anchor10.setOnMouseExited(event -> {
+            minimize.setNode(anchor10);
+            minimize.play();
+        });
+
+        anchor11.setOnMouseExited(event -> {
+            minimize.setNode(anchor11);
+            minimize.play();
+        });
+
+        anchor12.setOnMouseExited(event -> {
+            minimize.setNode(anchor12);
+            minimize.play();
+        });
+
+        anchor20.setOnMouseExited(event -> {
+            minimize.setNode(anchor20);
+            minimize.play();
+        });
+
+        anchor21.setOnMouseExited(event -> {
+            minimize.setNode(anchor21);
+            minimize.play();
+        });
+
+        anchor22.setOnMouseExited(event -> {
+            minimize.setNode(anchor22);
+            minimize.play();
+        });
+
+        food_img.setOnMouseEntered(event -> {
+            maximize.setNode(food_img);
+            maximize.play();
+        });
+        food_img.setOnMouseExited(event -> {
+            minimize.setNode(food_img);
+            minimize.play();
+        });
+
+        vehicle_img.setOnMouseEntered(event -> {
+            maximize.setNode(vehicle_img);
+            maximize.play();
+        });
+        vehicle_img.setOnMouseExited(event -> {
+            minimize.setNode(vehicle_img);
+            minimize.play();
+        });
+
+        Stationary_img.setOnMouseEntered(event -> {
+            maximize.setNode(Stationary_img);
+            maximize.play();
+        });
+        Stationary_img.setOnMouseExited(event -> {
+            minimize.setNode(Stationary_img);
+            minimize.play();
+        });
+
+        digital_img.setOnMouseEntered(event -> {
+            maximize.setNode(digital_img);
+            maximize.play();
+        });
+        digital_img.setOnMouseExited(event -> {
+            minimize.setNode(digital_img);
+            minimize.play();
         });
     }
 }
