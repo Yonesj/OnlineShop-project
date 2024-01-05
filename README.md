@@ -6,6 +6,7 @@ Welcome to the OnlineShop project! This project is an implementation of an onlin
 ## Table of Contents
 - [Introduction](#introduction)
 - [Demo](#demo)
+  - [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
   - [Admin Abilities](#admin-abilities)
@@ -24,7 +25,12 @@ The OnlineShop project is an online shopping application that allows users to ex
 ## Demo
 Check out the [demo video on YouTube](https://youtu.be/YSOXaI8EAsc) to get a quick overview of the project.
 
-<br />
+### Screenshots
+![Screenshot 1](\screenshots\Screenshot 2.png)
+
+<img alt="Sign in panel" src="\screenshots\Screenshot 5.png" width="324"/> <img src="\screenshots\Screenshot 3.png" alt="product panel" width="665" />
+
+
 
 ## Technologies Used
 - Java
