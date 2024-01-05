@@ -26,10 +26,13 @@ The OnlineShop project is an online shopping application that allows users to ex
 Check out the [demo video on YouTube](https://youtu.be/YSOXaI8EAsc) to get a quick overview of the project.
 
 ### Screenshots
-![Screenshot 1](\screenshots\Screenshot 2.png)
+<img alt="main panel" src="\screenshots\Screenshot 2.png"/>
+ 
 
-<img alt="Sign in panel" src="\screenshots\Screenshot 5.png" width="324"/> <img src="\screenshots\Screenshot 3.png" alt="product panel" width="665" />
-
+<p float="left">
+  <img alt="Sign in panel" src="\screenshots\Screenshot 5.png" width="325"/>
+  <img src="\screenshots\Screenshot 3.png" alt="product panel" width="680" />
+</p>
 
 
 ## Technologies Used
