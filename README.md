@@ -30,8 +30,8 @@ Check out the [demo video on YouTube](https://youtu.be/YSOXaI8EAsc) to get a qui
  
 
 <p float="left">
-  <img alt="Sign in panel" src="\screenshots\Screenshot 5.png" width="300"/>
-  <img src="\screenshots\Screenshot 3.png" alt="product panel" width="630" />
+  <img alt="Sign in panel" src="\screenshots\Screenshot 5.png" width="290"/>
+  <img src="\screenshots\Screenshot 3.png" alt="product panel" width="610" />
 </p>
 
 
